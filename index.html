@@ -1094,20 +1094,17 @@
     reveals.forEach(el => observer.observe(el));
 
     // Waitlist form
-    function handleSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('email-input').value;
-      const form = document.getElementById('waitlist-form');
-      const msg = document.getElementById('success-msg');
-
-      // In production, POST to your backend here
-      // fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
-
-      form.style.display = 'none';
-      msg.style.display = 'block';
-
-      console.log('Waitlist signup:', email);
-    }
+    async function handleSubmit(e) {
+  e.preventDefault();
+  const email = document.getElementById('email-input').value;
+  await fetch('https://formspree.io/f/mvzwyjvp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  document.getElementById('waitlist-form').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'block';
+}
 
     // Smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
