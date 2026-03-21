@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proxy — Reality as a Service</title>
+  <meta name="description" content="The physical-world data layer for AI agents. Query reality. Get structured, verifiable truth from the real world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080c14;
+      --bg2:      #0d1420;
+      --bg3:      #111a2c;
+      --border:   #1e2d45;
+      --border2:  #243450;
+      --text:     #e8edf5;
+      --text2:    #8a9bb8;
+      --text3:    #4d607e;
+      --amber:    #f5a623;
+      --amber2:   #ffc96b;
+      --amber-bg: rgba(245,166,35,0.07);
+      --green:    #3dd68c;
+      --green-bg: rgba(61,214,140,0.06);
+      --blue:     #4b9eff;
+      --blue-bg:  rgba(75,158,255,0.07);
+      --red:      #ff6b6b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── GRID BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      background: rgba(8,12,20,0.85);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 8px var(--amber);
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--amber); }
+      50% { opacity: 0.6; box-shadow: 0 0 16px var(--amber); }
+    }
+    .nav-cta {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--amber);
+      text-decoration: none;
+      border: 1px solid rgba(245,166,35,0.3);
+      padding: 7px 16px;
+      border-radius: 3px;
+      letter-spacing: 0.06em;
+      transition: all 0.2s;
+    }
+    .nav-cta:hover {
+      background: var(--amber-bg);
+      border-color: var(--amber);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 0 100px;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(245,166,35,0.25);
+      padding: 5px 12px;
+      border-radius: 2px;
+      background: var(--amber-bg);
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fade-up 0.6s ease forwards 0.1s;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--amber);
+    }
+    .hero-headline {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(44px, 6vw, 76px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      max-width: 800px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.2s;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--amber);
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text2);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.3s;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fade-up 0.7s ease forwards 0.4s;
+    }
+    .btn-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--amber);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--amber2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(245,166,35,0.25);
+    }
+    .btn-secondary {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text2);
+      background: transparent;
+      border: 1px solid var(--border2);
+      padding: 13px 28px;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--text3);
+      background: var(--bg2);
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      margin: 0;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .section {
+      padding: 96px 0;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.1;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text2);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 64px;
+    }
+
+    /* ── THREE BULLETS ── */
+    .bullets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 0;
+    }
+    .bullet-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .bullet-card:hover { border-color: var(--border2); }
+    .bullet-card:first-child { border-radius: 3px 0 0 3px; }
+    .bullet-card:last-child  { border-radius: 0 3px 3px 0; }
+    .bullet-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .bullet-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .bullet-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .bullet-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ── JSON EXAMPLE ── */
+    .example-section {
+      padding: 0 0 96px;
+    }
+    .example-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      align-items: stretch;
+    }
+    .example-left {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px 0 0 3px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .example-right {
+      background: #060a10;
+      border: 1px solid var(--border);
+      border-radius: 0 3px 3px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .code-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .code-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .code-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .code-dot-r { background: #ff5f57; }
+    .code-dot-y { background: #febc2e; }
+    .code-dot-g { background: #28c840; }
+    .code-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.06em;
+    }
+    .code-body {
+      padding: 28px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      position: relative;
+    }
+    .code-line { display: block; }
+    .c-key   { color: #8ab4f8; }
+    .c-str   { color: #ce9178; }
+    .c-num   { color: var(--amber2); }
+    .c-bool  { color: var(--green); }
+    .c-score { color: var(--amber); font-weight: 500; }
+    .c-dim   { color: var(--text3); }
+    .c-prov  { color: #b48ead; }
+
+    .example-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .example-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .example-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .example-stats {
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item {}
+    .stat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--amber);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── USE CASES ── */
+    .use-cases {
+      padding: 0 0 96px;
+    }
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .case-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 36px 32px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+    .case-card:hover { border-color: var(--border2); }
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .case-card.healthcare::before  { background: var(--amber); }
+    .case-card.finance::before     { background: var(--blue); }
+    .case-card.retail::before      { background: var(--green); }
+    .case-card:first-child { border-radius: 3px 0 0 3px; }
+    .case-card:last-child  { border-radius: 0 3px 3px 0; }
+    .case-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .case-tag.healthcare { background: var(--amber-bg); color: var(--amber); }
+    .case-tag.finance    { background: var(--blue-bg);  color: var(--blue);  }
+    .case-tag.retail     { background: var(--green-bg); color: var(--green); }
+    .case-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .case-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+    .case-queries {
+      list-style: none;
+    }
+    .case-queries li {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text3);
+      padding: 6px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .case-queries li::before {
+      content: '›';
+      flex-shrink: 0;
+      margin-top: 0px;
+    }
+
+    /* ── CREDIBILITY ── */
+    .credibility {
+      padding: 0 0 96px;
+    }
+    .cred-inner {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 56px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cred-inner::after {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 70%);
+    }
+    .cred-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cred-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .cred-title em { font-style: italic; color: var(--amber); }
+    .cred-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .cred-points {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .cred-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .cred-point-icon {
+      width: 36px; height: 36px;
+      border-radius: 3px;
+      border: 1px solid var(--border2);
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .cred-point-text {}
+    .cred-point-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .cred-point-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.55;
+    }
+
+    /* ── WAITLIST ── */
+    .waitlist {
+      padding: 0 0 120px;
+    }
+    .waitlist-inner {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .waitlist-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--amber);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .waitlist-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+    .waitlist-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 40px;
+    }
+    .waitlist-form {
+      display: flex;
+      gap: 8px;
+      max-width: 480px;
+      margin: 0 auto 16px;
+    }
+    .waitlist-input {
+      flex: 1;
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 13px 18px;
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .waitlist-input::placeholder { color: var(--text3); }
+    .waitlist-input:focus { border-color: var(--amber); }
+    .waitlist-submit {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--bg);
+      background: var(--amber);
+      border: none;
+      padding: 13px 24px;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .waitlist-submit:hover {
+      background: var(--amber2);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(245,166,35,0.3);
+    }
+    .waitlist-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+    .waitlist-tags {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+    .waitlist-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
+    }
+    .success-msg {
+      display: none;
+      background: var(--green-bg);
+      border: 1px solid rgba(61,214,140,0.2);
+      border-radius: 3px;
+      padding: 14px 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--green);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+    }
+    .footer-raas {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.06em;
+    }
+    .footer-raas span { color: var(--amber); }
+
+    /* ── ANIMATED TERMINAL LINE ── */
+    .terminal-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 8px;
+    }
+    .terminal-line::before {
+      content: '▸';
+      color: var(--amber);
+      font-size: 10px;
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 12px 0;
+      margin-bottom: 0;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.05em;
+      padding: 0 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ticker-item .pill {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid rgba(61,214,140,0.2);
+      padding: 1px 7px;
+      border-radius: 20px;
+      font-size: 10px;
+    }
+    .ticker-sep {
+      color: var(--border2);
+      padding: 0 8px;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .bullets { grid-template-columns: 1fr; }
+      .bullet-card:first-child { border-radius: 3px 3px 0 0; }
+      .bullet-card:last-child  { border-radius: 0 0 3px 3px; }
+      .example-grid { grid-template-columns: 1fr; }
+      .example-left { border-radius: 3px 3px 0 0; }
+      .example-right { border-radius: 0 0 3px 3px; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .case-card:first-child { border-radius: 3px 3px 0 0; }
+      .case-card:last-child  { border-radius: 0 0 3px 3px; }
+      .cred-inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
+      .waitlist-form { flex-direction: column; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-dot"></span>
+        PROXY
+      </a>
+      <a href="#waitlist" class="nav-cta">REQUEST ACCESS</a>
+    </div>
+  </nav>
+
+  <!-- TICKER -->
+  <div style="margin-top:56px" class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min</span>
+      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min</span>
+      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min</span>
+      <span class="ticker-item">permit_status · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min</span>
+      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min</span>
+      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min</span>
+      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min</span>
+      <span class="ticker-item">permit_status · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min</span>
+      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Private Beta · Salt Lake City</div>
+      <h1 class="hero-headline">
+        The <em>physical-world</em><br>data layer for AI agents
+      </h1>
+      <p class="hero-sub">
+        Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned in milliseconds.
+      </p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn-primary">Join early access</a>
+        <a href="#how" class="btn-secondary">See how it works</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="container">
+      <p class="section-label reveal">How it works</p>
+      <h2 class="section-title reveal">AI can reason about anything.<br><em style="font-style:italic;color:var(--amber)">It can't touch the world.</em></h2>
+      <p class="section-sub reveal">Proxy is the missing layer between what agents know and what's actually true right now.</p>
+      <div class="bullets">
+        <div class="bullet-card reveal">
+          <div class="bullet-num">01</div>
+          <span class="bullet-icon">🤖</span>
+          <div class="bullet-title">AI agents can't access real-world data</div>
+          <div class="bullet-desc">No database tracks real-time drug availability, shelf inventory, or physical verification. Agents hit a wall the moment they need ground truth.</div>
+        </div>
+        <div class="bullet-card reveal reveal-delay-1">
+          <div class="bullet-num">02</div>
+          <span class="bullet-icon">👁</span>
+          <div class="bullet-title">Proxy dispatches humans as sensors</div>
+          <div class="bullet-desc">When an agent needs physical-world data, Proxy matches a geo-verified worker, dispatches them to the location, and collects structured proof.</div>
+        </div>
+        <div class="bullet-card reveal reveal-delay-2">
+          <div class="bullet-num">03</div>
+          <span class="bullet-icon">⚡</span>
+          <div class="bullet-title">Returns structured, confidence-scored truth</div>
+          <div class="bullet-desc">Every query returns typed JSON with a confidence score, provenance hash, and human-readable summary. Decision-grade data, not opinions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON EXAMPLE -->
+  <section class="example-section">
+    <div class="container">
+      <div class="example-grid reveal">
+        <div class="example-left">
+          <p class="example-eyebrow">Live example</p>
+          <h3 class="example-title">Query once.<br>Get verified truth.</h3>
+          <p class="example-desc">
+            A Claude agent asked whether a specific drug was in stock near Salt Lake City. Proxy dispatched a healthcare-verified worker. The worker visited the pharmacy and returned structured data — in under 20 minutes.
+          </p>
+          <div class="example-stats">
+            <div class="stat-item">
+              <span class="stat-val">18 min</span>
+              <span class="stat-label">Resolution time</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">0.91</span>
+              <span class="stat-label">Confidence score</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-val">✓</span>
+              <span class="stat-label">Provenance hash</span>
+            </div>
+          </div>
+        </div>
+        <div class="example-right">
+          <div class="code-header">
+            <div class="code-dots">
+              <div class="code-dot code-dot-r"></div>
+              <div class="code-dot code-dot-y"></div>
+              <div class="code-dot code-dot-g"></div>
+            </div>
+            <span class="code-label">proxy_response.json</span>
+          </div>
+          <div class="code-body">
+            <div class="terminal-line">POST /v1/queries → 200 OK</div>
+            <br>
+            <code>
+              <span class="code-line"><span class="c-dim">{</span></span>
+              <span class="code-line">  <span class="c-key">"query_type"</span><span class="c-dim">:</span> <span class="c-str">"pharmacy_inventory"</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"output"</span><span class="c-dim">: {</span></span>
+              <span class="code-line">    <span class="c-key">"in_stock"</span><span class="c-dim">:</span> <span class="c-bool">true</span><span class="c-dim">,</span></span>
+              <span class="code-line">    <span class="c-key">"price_usd"</span><span class="c-dim">:</span> <span class="c-num">26500.00</span><span class="c-dim">,</span></span>
+              <span class="code-line">    <span class="c-key">"requires_prior_auth"</span><span class="c-dim">:</span> <span class="c-bool">true</span><span class="c-dim">,</span></span>
+              <span class="code-line">    <span class="c-key">"pharmacy"</span><span class="c-dim">:</span> <span class="c-str">"CVS, 400 N 900 E, SLC"</span></span>
+              <span class="code-line">  <span class="c-dim">},</span></span>
+              <span class="code-line">  <span class="c-key">"confidence"</span><span class="c-dim">:</span> <span class="c-score">0.91</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"resolved_in_minutes"</span><span class="c-dim">:</span> <span class="c-num">18</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"human_summary"</span><span class="c-dim">:</span> <span class="c-str">"In stock at CVS.</span></span>
+              <span class="code-line">    <span class="c-str">  Verified 18 min ago.</span></span>
+              <span class="code-line">    <span class="c-str">  High confidence."</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"provenance_hash"</span><span class="c-dim">:</span> <span class="c-prov">"sha256:a3f9b2..."</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"finality"</span><span class="c-dim">:</span> <span class="c-str">"provisional"</span></span>
+              <span class="code-line"><span class="c-dim">}</span></span>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="use-cases">
+    <div class="container">
+      <p class="section-label reveal">Use cases</p>
+      <h2 class="section-title reveal">Built for the verticals<br>where truth is expensive.</h2>
+      <p class="section-sub reveal">Three verticals where real-world ground truth determines real-world outcomes.</p>
+      <div class="cases-grid">
+        <div class="case-card healthcare reveal">
+          <div class="case-tag healthcare">Healthcare</div>
+          <div class="case-title">Drug availability &amp; formulary verification</div>
+          <div class="case-desc">No database tracks real-time drug availability. Proxy dispatches healthcare-verified workers to pharmacies and returns structured, confidence-scored inventory data.</div>
+          <ul class="case-queries">
+            <li>Is Leqembi 200mg in stock within 5mi of SLC?</li>
+            <li>Does CVS accept Medicare Part B for this drug?</li>
+            <li>Which infusion centers have capacity this week?</li>
+          </ul>
+        </div>
+        <div class="case-card finance reveal reveal-delay-1">
+          <div class="case-tag finance">Prediction Markets</div>
+          <div class="case-title">Physical-world verification for market resolution</div>
+          <div class="case-desc">Prediction markets need physical verification to resolve correctly. Proxy gives agents a trusted, provenance-tracked ground truth layer for real-world outcomes.</div>
+          <ul class="case-queries">
+            <li>Verify construction milestone at this address</li>
+            <li>Confirm public event attendance at venue X</li>
+            <li>Check product launch availability at retail</li>
+          </ul>
+        </div>
+        <div class="case-card retail reveal reveal-delay-2">
+          <div class="case-tag retail">Retail &amp; Inventory</div>
+          <div class="case-title">Real-time shelf availability and pricing</div>
+          <div class="case-desc">Scraping can't tell you what's actually on the shelf. Proxy sends observers to specific locations and returns structured inventory truth with timestamps.</div>
+          <ul class="case-queries">
+            <li>Is Product X in stock at Target on Main St?</li>
+            <li>What is the shelf price vs. advertised price?</li>
+            <li>Verify promotional display compliance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY -->
+  <section class="credibility">
+    <div class="container">
+      <div class="cred-inner reveal">
+        <div>
+          <p class="cred-eyebrow">Why Proxy</p>
+          <h3 class="cred-title">Built by an operator<br>who <em>lived</em> the problem.</h3>
+          <p class="cred-desc">
+            Proxy was built by a healthcare operator and attorney who spent years watching critical decisions fail because the underlying ground truth didn't exist — or couldn't be trusted. The system is designed from the inside out, not from a whiteboard.
+          </p>
+        </div>
+        <div class="cred-points">
+          <div class="cred-point">
+            <div class="cred-point-icon">🔒</div>
+            <div class="cred-point-text">
+              <div class="cred-point-title">Provenance on every result</div>
+              <div class="cred-point-desc">Every query returns a SHA-256 provenance hash — independently verifiable chain of custody from observation to output.</div>
+            </div>
+          </div>
+          <div class="cred-point">
+            <div class="cred-point-icon">📊</div>
+            <div class="cred-point-text">
+              <div class="cred-point-title">Confidence scored, not just returned</div>
+              <div class="cred-point-desc">Accuracy vectors, location verification, and AI proof review combine into a single confidence score agents can act on.</div>
+            </div>
+          </div>
+          <div class="cred-point">
+            <div class="cred-point-icon">⏱</div>
+            <div class="cred-point-text">
+              <div class="cred-point-title">Truth decays. We track it.</div>
+              <div class="cred-point-desc">Every result has a half-life. Proxy monitors decay and alerts you before stale data drives a decision.</div>
+            </div>
+          </div>
+          <div class="cred-point">
+            <div class="cred-point-icon">🔌</div>
+            <div class="cred-point-text">
+              <div class="cred-point-title">Native to your agent stack</div>
+              <div class="cred-point-desc">MCP server, REST API, webhooks, and WebSocket streaming. Works with Claude, LangChain, CrewAI, or any agent framework.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist" id="waitlist">
+    <div class="container">
+      <div class="waitlist-inner">
+        <p class="waitlist-eyebrow reveal">Private beta · Salt Lake City</p>
+        <h2 class="waitlist-title reveal">Request early access.</h2>
+        <p class="waitlist-desc reveal">
+          We're opening access to 100 workers and 10 Agent Operator accounts. Healthcare teams, agent builders, and prediction market operators are our first priority.
+        </p>
+        <form class="waitlist-form reveal" id="waitlist-form" onsubmit="handleSubmit(event)">
+          <input
+            class="waitlist-input"
+            type="email"
+            placeholder="your@email.com"
+            required
+            id="email-input"
+          />
+          <button class="waitlist-submit" type="submit">JOIN WAITLIST</button>
+        </form>
+        <div class="success-msg" id="success-msg">
+          ✓ You're on the list. We'll be in touch soon.
+        </div>
+        <p class="waitlist-note reveal">No spam. We'll reach out directly when access opens.</p>
+        <div class="waitlist-tags reveal">
+          <span class="waitlist-tag">For developers</span>
+          <span class="waitlist-tag">For AI agents</span>
+          <span class="waitlist-tag">For enterprises</span>
+          <span class="waitlist-tag">For healthcare teams</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo">PROXY · useproxy.io</span>
+        <span class="footer-raas">Reality as a Service<span>™</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Waitlist form
+    function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      const form = document.getElementById('waitlist-form');
+      const msg = document.getElementById('success-msg');
+
+      // In production, POST to your backend here
+      // fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
+
+      form.style.display = 'none';
+      msg.style.display = 'block';
+
+      console.log('Waitlist signup:', email);
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
