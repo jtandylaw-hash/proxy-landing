@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proxy — Reality as a Service</title>
+  <title>Proxy — Reality as a Service™</title>
   <meta name="description" content="The physical-world data layer for AI agents. Query reality. Get structured, verifiable truth from the real world." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +41,6 @@
       overflow-x: hidden;
     }
 
-    /* ── GRID BACKGROUND ── */
     body::before {
       content: '';
       position: fixed;
@@ -55,7 +54,6 @@
       z-index: 0;
     }
 
-    /* ── NOISE OVERLAY ── */
     body::after {
       content: '';
       position: fixed;
@@ -92,6 +90,11 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
     .nav-logo {
       font-family: 'DM Mono', monospace;
       font-size: 15px;
@@ -114,6 +117,34 @@
       0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--amber); }
       50% { opacity: 0.6; box-shadow: 0 0 16px var(--amber); }
     }
+    /* RaaS badge in nav */
+    .nav-raas {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      border-left: 1px solid var(--border2);
+      padding-left: 20px;
+      opacity: 0.95;
+      white-space: nowrap;
+    }
+    .nav-raas sup { font-size: 8px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-sensor-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text3);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-sensor-link:hover { color: var(--text2); }
     .nav-cta {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -150,7 +181,7 @@
       padding: 5px 12px;
       border-radius: 2px;
       background: var(--amber-bg);
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       opacity: 0;
       animation: fade-up 0.6s ease forwards 0.1s;
     }
@@ -160,6 +191,18 @@
       border-radius: 50%;
       background: var(--amber);
     }
+    /* Prominent RaaS statement below badge */
+    .hero-raas {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(16px, 2vw, 22px);
+      font-style: italic;
+      color: var(--green);
+      letter-spacing: 0.02em;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fade-up 0.6s ease forwards 0.15s;
+    }
+    .hero-raas sup { font-size: 10px; font-style: normal; }
     .hero-headline {
       font-family: 'Instrument Serif', serif;
       font-size: clamp(44px, 6vw, 76px);
@@ -240,7 +283,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── DIVIDER ── */
     .divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border2), transparent);
@@ -355,14 +397,8 @@
       border-bottom: 1px solid var(--border);
       background: var(--bg2);
     }
-    .code-dots {
-      display: flex;
-      gap: 6px;
-    }
-    .code-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-    }
+    .code-dots { display: flex; gap: 6px; }
+    .code-dot { width: 10px; height: 10px; border-radius: 50%; }
     .code-dot-r { background: #ff5f57; }
     .code-dot-y { background: #febc2e; }
     .code-dot-g { background: #28c840; }
@@ -377,7 +413,6 @@
       font-family: 'DM Mono', monospace;
       font-size: 13px;
       line-height: 1.8;
-      position: relative;
     }
     .code-line { display: block; }
     .c-key   { color: #8ab4f8; }
@@ -412,11 +447,7 @@
       line-height: 1.65;
       margin-bottom: 32px;
     }
-    .example-stats {
-      display: flex;
-      gap: 32px;
-    }
-    .stat-item {}
+    .example-stats { display: flex; gap: 32px; }
     .stat-val {
       font-family: 'DM Mono', monospace;
       font-size: 22px;
@@ -432,9 +463,7 @@
     }
 
     /* ── USE CASES ── */
-    .use-cases {
-      padding: 0 0 96px;
-    }
+    .use-cases { padding: 0 0 96px; }
     .cases-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -489,9 +518,7 @@
       line-height: 1.65;
       margin-bottom: 28px;
     }
-    .case-queries {
-      list-style: none;
-    }
+    .case-queries { list-style: none; }
     .case-queries li {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -503,16 +530,172 @@
       gap: 8px;
       line-height: 1.4;
     }
-    .case-queries li::before {
-      content: '›';
+    .case-queries li::before { content: '›'; flex-shrink: 0; }
+
+    /* ── SENSOR SECTION ── */
+    .sensor-section { padding: 0 0 96px; }
+    .sensor-inner {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .sensor-header {
+      padding: 48px 56px 40px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .sensor-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .sensor-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 16px;
+    }
+    .sensor-title em { font-style: italic; color: var(--green); }
+    .sensor-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .sensor-proof {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sensor-stat-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 16px 20px;
+    }
+    .sensor-stat-val {
+      font-family: 'DM Mono', monospace;
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--green);
       flex-shrink: 0;
-      margin-top: 0px;
+      min-width: 80px;
+    }
+    .sensor-stat-label {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.45;
+    }
+    .sensor-stat-label strong {
+      display: block;
+      font-weight: 600;
+      color: var(--text);
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    /* Two path cards */
+    .sensor-paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .sensor-path {
+      padding: 40px 56px 44px;
+      position: relative;
+    }
+    .sensor-path:first-child {
+      border-right: 1px solid var(--border);
+    }
+    .path-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .path-tag.independent {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid rgba(61,214,140,0.2);
+    }
+    .path-tag.gig {
+      background: var(--blue-bg);
+      color: var(--blue);
+      border: 1px solid rgba(75,158,255,0.2);
+    }
+    .path-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .path-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+    .path-gig-callout {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--blue);
+      background: var(--blue-bg);
+      border: 1px solid rgba(75,158,255,0.15);
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .btn-sensor {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      background: transparent;
+      border: 1px solid rgba(61,214,140,0.3);
+      padding: 11px 22px;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-sensor:hover {
+      background: var(--green-bg);
+      border-color: var(--green);
+    }
+    .sensor-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 12px;
+      letter-spacing: 0.03em;
     }
 
     /* ── CREDIBILITY ── */
-    .credibility {
-      padding: 0 0 96px;
-    }
+    .credibility { padding: 0 0 96px; }
     .cred-inner {
       background: var(--bg2);
       border: 1px solid var(--border);
@@ -557,6 +740,7 @@
       color: var(--text2);
       line-height: 1.7;
     }
+    .cred-desc + .cred-desc { margin-top: 16px; }
     .cred-points {
       display: flex;
       flex-direction: column;
@@ -578,7 +762,6 @@
       flex-shrink: 0;
       font-size: 16px;
     }
-    .cred-point-text {}
     .cred-point-title {
       font-size: 14px;
       font-weight: 600;
@@ -593,9 +776,7 @@
     }
 
     /* ── WAITLIST ── */
-    .waitlist {
-      padding: 0 0 120px;
-    }
+    .waitlist { padding: 0 0 120px; }
     .waitlist-inner {
       text-align: center;
       max-width: 560px;
@@ -625,6 +806,42 @@
       line-height: 1.65;
       margin-bottom: 40px;
     }
+    /* Tab switcher for agent vs sensor */
+    .waitlist-tabs {
+      display: flex;
+      gap: 2px;
+      max-width: 480px;
+      margin: 0 auto 24px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px;
+    }
+    .waitlist-tab {
+      flex: 1;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      padding: 9px 12px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: transparent;
+      color: var(--text3);
+      text-transform: uppercase;
+    }
+    .waitlist-tab.active {
+      background: var(--amber-bg);
+      color: var(--amber);
+      border: 1px solid rgba(245,166,35,0.2);
+    }
+    .waitlist-tab.active.sensor-tab {
+      background: var(--green-bg);
+      color: var(--green);
+      border: 1px solid rgba(61,214,140,0.2);
+    }
     .waitlist-form {
       display: flex;
       gap: 8px;
@@ -645,6 +862,7 @@
     }
     .waitlist-input::placeholder { color: var(--text3); }
     .waitlist-input:focus { border-color: var(--amber); }
+    .waitlist-input.sensor-focus:focus { border-color: var(--green); }
     .waitlist-submit {
       font-family: 'DM Mono', monospace;
       font-size: 12px;
@@ -663,6 +881,14 @@
       background: var(--amber2);
       transform: translateY(-1px);
       box-shadow: 0 6px 20px rgba(245,166,35,0.3);
+    }
+    .waitlist-submit.sensor-btn {
+      background: var(--green);
+      color: #000;
+    }
+    .waitlist-submit.sensor-btn:hover {
+      background: #5ef5ab;
+      box-shadow: 0 6px 20px rgba(61,214,140,0.3);
     }
     .waitlist-note {
       font-family: 'DM Mono', monospace;
@@ -723,7 +949,7 @@
     }
     .footer-raas span { color: var(--amber); }
 
-    /* ── ANIMATED TERMINAL LINE ── */
+    /* ── TERMINAL LINE ── */
     .terminal-line {
       display: flex;
       align-items: center;
@@ -746,11 +972,9 @@
       border-bottom: 1px solid var(--border);
       background: var(--bg2);
       padding: 12px 0;
-      margin-bottom: 0;
     }
     .ticker-track {
       display: flex;
-      gap: 0;
       animation: ticker 30s linear infinite;
       white-space: nowrap;
     }
@@ -773,10 +997,7 @@
       border-radius: 20px;
       font-size: 10px;
     }
-    .ticker-sep {
-      color: var(--border2);
-      padding: 0 8px;
-    }
+    .ticker-sep { color: var(--border2); padding: 0 8px; }
     @keyframes ticker {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -788,16 +1009,15 @@
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      .nav-raas { display: none; }
+      .nav-sensor-link { display: none; }
       .bullets { grid-template-columns: 1fr; }
       .bullet-card:first-child { border-radius: 3px 3px 0 0; }
       .bullet-card:last-child  { border-radius: 0 0 3px 3px; }
@@ -808,6 +1028,10 @@
       .case-card:first-child { border-radius: 3px 3px 0 0; }
       .case-card:last-child  { border-radius: 0 0 3px 3px; }
       .cred-inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
+      .sensor-header { grid-template-columns: 1fr; gap: 32px; padding: 36px 32px 32px; }
+      .sensor-paths { grid-template-columns: 1fr; }
+      .sensor-path:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+      .sensor-path { padding: 32px; }
       .waitlist-form { flex-direction: column; }
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -818,28 +1042,34 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <span class="nav-logo-dot"></span>
-        PROXY
-      </a>
-      <a href="#waitlist" class="nav-cta">REQUEST ACCESS</a>
+      <div class="nav-left">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-dot"></span>
+          PROXY
+        </a>
+        <span class="nav-raas">Reality as a Service<sup>™</sup></span>
+      </div>
+      <div class="nav-right">
+        <a href="#sensors" class="nav-sensor-link">Become a Sensor</a>
+        <a href="#waitlist" class="nav-cta">REQUEST ACCESS</a>
+      </div>
     </div>
   </nav>
 
   <!-- TICKER -->
   <div style="margin-top:56px" class="ticker-wrap">
     <div class="ticker-track">
-      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min</span>
-      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min</span>
-      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min</span>
-      <span class="ticker-item">permit_status · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min</span>
-      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min</span>
+      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min <span class="ticker-sep">·</span> truth atoms: 6</span>
+      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min <span class="ticker-sep">·</span> truth atoms: 5</span>
+      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min <span class="ticker-sep">·</span> truth atoms: 4</span>
+      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min <span class="ticker-sep">·</span> truth atoms: 7</span>
+      <span class="ticker-item">market_resolution · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min <span class="ticker-sep">·</span> truth atoms: 3</span>
       <!-- Duplicate for seamless loop -->
-      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min</span>
-      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min</span>
-      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min</span>
-      <span class="ticker-item">permit_status · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min</span>
-      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min</span>
+      <span class="ticker-item">pharmacy_inventory · SLC, UT <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.91 <span class="ticker-sep">·</span> 14 min <span class="ticker-sep">·</span> truth atoms: 6</span>
+      <span class="ticker-item">drug_availability · Phoenix, AZ <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.87 <span class="ticker-sep">·</span> 22 min <span class="ticker-sep">·</span> truth atoms: 5</span>
+      <span class="ticker-item">retail_inventory · Austin, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.88 <span class="ticker-sep">·</span> 18 min <span class="ticker-sep">·</span> truth atoms: 4</span>
+      <span class="ticker-item">formulary_check · Dallas, TX <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.89 <span class="ticker-sep">·</span> 19 min <span class="ticker-sep">·</span> truth atoms: 7</span>
+      <span class="ticker-item">market_resolution · Denver, CO <span class="pill">verified</span> <span class="ticker-sep">·</span> confidence: 0.94 <span class="ticker-sep">·</span> 31 min <span class="ticker-sep">·</span> truth atoms: 3</span>
     </div>
   </div>
 
@@ -847,11 +1077,12 @@
   <section class="hero">
     <div class="container">
       <div class="hero-badge">Private Beta · Salt Lake City</div>
+      <p class="hero-raas">Reality as a Service<sup>™</sup></p>
       <h1 class="hero-headline">
         The <em>physical-world</em><br>data layer for AI agents
       </h1>
       <p class="hero-sub">
-        Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned in milliseconds.
+        Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned as decision-grade data your agents can act on.
       </p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn-primary">Join early access</a>
@@ -878,14 +1109,14 @@
         <div class="bullet-card reveal reveal-delay-1">
           <div class="bullet-num">02</div>
           <span class="bullet-icon">👁</span>
-          <div class="bullet-title">Proxy dispatches humans as sensors</div>
-          <div class="bullet-desc">When an agent needs physical-world data, Proxy matches a geo-verified worker, dispatches them to the location, and collects structured proof.</div>
+          <div class="bullet-title">Proxy dispatches human sensors</div>
+          <div class="bullet-desc">When an agent needs physical-world data, Proxy matches a geo-verified sensor, dispatches them to the location, and collects structured proof.</div>
         </div>
         <div class="bullet-card reveal reveal-delay-2">
           <div class="bullet-num">03</div>
           <span class="bullet-icon">⚡</span>
           <div class="bullet-title">Returns structured, confidence-scored truth</div>
-          <div class="bullet-desc">Every query returns typed JSON with a confidence score, provenance hash, and human-readable summary. Decision-grade data, not opinions.</div>
+          <div class="bullet-desc">Every query returns typed data with a confidence score, cryptographic provenance record, and human-readable summary. Decision-grade data, not opinions.</div>
         </div>
       </div>
     </div>
@@ -899,7 +1130,7 @@
           <p class="example-eyebrow">Live example</p>
           <h3 class="example-title">Query once.<br>Get verified truth.</h3>
           <p class="example-desc">
-            A Claude agent asked whether a specific drug was in stock near Salt Lake City. Proxy dispatched a healthcare-verified worker. The worker visited the pharmacy and returned structured data — in under 20 minutes.
+            A Claude agent asked whether a specific drug was in stock near Salt Lake City. Proxy dispatched a verified sensor. The sensor visited the pharmacy and returned structured data — in under 20 minutes. The result is stored permanently in the Ground Truth Database.
           </p>
           <div class="example-stats">
             <div class="stat-item">
@@ -911,8 +1142,8 @@
               <span class="stat-label">Confidence score</span>
             </div>
             <div class="stat-item">
-              <span class="stat-val">✓</span>
-              <span class="stat-label">Provenance hash</span>
+              <span class="stat-val">6</span>
+              <span class="stat-label">Truth Atoms stored</span>
             </div>
           </div>
         </div>
@@ -942,7 +1173,8 @@
               <span class="code-line">  <span class="c-key">"human_summary"</span><span class="c-dim">:</span> <span class="c-str">"In stock at CVS.</span></span>
               <span class="code-line">    <span class="c-str">  Verified 18 min ago.</span></span>
               <span class="code-line">    <span class="c-str">  High confidence."</span><span class="c-dim">,</span></span>
-              <span class="code-line">  <span class="c-key">"provenance_hash"</span><span class="c-dim">:</span> <span class="c-prov">"sha256:a3f9b2..."</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"provenance"</span><span class="c-dim">:</span> <span class="c-prov">"verified"</span><span class="c-dim">,</span></span>
+              <span class="code-line">  <span class="c-key">"truth_atoms_stored"</span><span class="c-dim">:</span> <span class="c-num">6</span><span class="c-dim">,</span></span>
               <span class="code-line">  <span class="c-key">"finality"</span><span class="c-dim">:</span> <span class="c-str">"provisional"</span></span>
               <span class="code-line"><span class="c-dim">}</span></span>
             </code>
@@ -959,35 +1191,101 @@
       <h2 class="section-title reveal">Built for the verticals<br>where truth is expensive.</h2>
       <p class="section-sub reveal">Three verticals where real-world ground truth determines real-world outcomes.</p>
       <div class="cases-grid">
-        <div class="case-card healthcare reveal">
-          <div class="case-tag healthcare">Healthcare</div>
-          <div class="case-title">Drug availability &amp; formulary verification</div>
-          <div class="case-desc">No database tracks real-time drug availability. Proxy dispatches healthcare-verified workers to pharmacies and returns structured, confidence-scored inventory data.</div>
-          <ul class="case-queries">
-            <li>Is Leqembi 200mg in stock within 5mi of SLC?</li>
-            <li>Does CVS accept Medicare Part B for this drug?</li>
-            <li>Which infusion centers have capacity this week?</li>
-          </ul>
-        </div>
-        <div class="case-card finance reveal reveal-delay-1">
-          <div class="case-tag finance">Prediction Markets</div>
-          <div class="case-title">Physical-world verification for market resolution</div>
-          <div class="case-desc">Prediction markets need physical verification to resolve correctly. Proxy gives agents a trusted, provenance-tracked ground truth layer for real-world outcomes.</div>
+        <div class="case-card finance reveal">
+          <div class="case-tag finance">Information Markets</div>
+          <div class="case-title">Physical verification for market resolution &amp; AI trading</div>
+          <div class="case-desc">Information markets — prediction markets, AI-driven trading bots, automated settlement systems — aggregate opinion with precision. Their failure point is invariable: they cannot verify the physical-world fact that resolves the position. Proxy gives agents a trusted, independently verified ground truth layer for real-world outcomes.</div>
           <ul class="case-queries">
             <li>Verify construction milestone at this address</li>
             <li>Confirm public event attendance at venue X</li>
             <li>Check product launch availability at retail</li>
           </ul>
         </div>
+        <div class="case-card healthcare reveal reveal-delay-1">
+          <div class="case-tag healthcare">Compliance &amp; Audit</div>
+          <div class="case-title">Physical control verification for SOC-1, site audits &amp; regulatory checks</div>
+          <div class="case-desc">Compliance evidence has one requirement systems of record cannot meet: it must reflect what was physically observed, at a specific location, at a specific time. Proxy returns provenance-backed structured evidence — cryptographically chained from sensor observation to output — that auditors and compliance agents can present, not just reference.</div>
+          <ul class="case-queries">
+            <li>Confirm physical security controls are in place at facility</li>
+            <li>Verify drug storage conditions at dispensing location</li>
+            <li>Confirm site readiness for regulatory inspection</li>
+          </ul>
+        </div>
         <div class="case-card retail reveal reveal-delay-2">
           <div class="case-tag retail">Retail &amp; Inventory</div>
-          <div class="case-title">Real-time shelf availability and pricing</div>
-          <div class="case-desc">Scraping can't tell you what's actually on the shelf. Proxy sends observers to specific locations and returns structured inventory truth with timestamps.</div>
+          <div class="case-title">Shelf-level commercial intelligence at scale</div>
+          <div class="case-desc">Brands spend billions assuming their retail execution matches their plans. It rarely does. Proxy closes the gap between what a brand believes is happening at the shelf and what a sensor confirms is actually there — pricing, placement, availability, and promotional compliance, returned as structured data your agents can act on in real time.</div>
           <ul class="case-queries">
-            <li>Is Product X in stock at Target on Main St?</li>
-            <li>What is the shelf price vs. advertised price?</li>
-            <li>Verify promotional display compliance</li>
+            <li>Is Product X actually on the shelf at Target on Main St?</li>
+            <li>What is the verified shelf price vs. advertised price?</li>
+            <li>Is the promotional display executing as planned at this location?</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENSOR SECTION -->
+  <section class="sensor-section" id="sensors">
+    <div class="container">
+      <p class="section-label reveal">Join the network</p>
+      <h2 class="section-title reveal">The physical world<br>needs eyes.</h2>
+      <p class="section-sub reveal">Proxy Sensors are verified field observers who turn real-world observations into structured truth that AI agents act on. Two paths to join.</p>
+      <div class="sensor-inner reveal">
+        <div class="sensor-header">
+          <div>
+            <p class="sensor-eyebrow">Proxy Sensors</p>
+            <h3 class="sensor-title">Your observations become<br><em>infrastructure.</em></h3>
+            <p class="sensor-desc">
+              Every time a Proxy Sensor visits a location and submits a verified observation, that result is stored permanently in the Ground Truth Database — confidence-scored, provenance-verified, and queryable by any agent. Sensors don't complete tasks. They feed a data layer that compounds over time.
+            </p>
+          </div>
+          <div class="sensor-proof">
+            <div class="sensor-stat-row">
+              <span class="sensor-stat-val">$20–40</span>
+              <div class="sensor-stat-label">
+                <strong>Per verification</strong>
+                Average earnings per observation submitted
+              </div>
+            </div>
+            <div class="sensor-stat-row">
+              <span class="sensor-stat-val">18 min</span>
+              <div class="sensor-stat-label">
+                <strong>Average resolution time</strong>
+                From dispatch to verified result returned
+              </div>
+            </div>
+            <div class="sensor-stat-row">
+              <span class="sensor-stat-val">4</span>
+              <div class="sensor-stat-label">
+                <strong>Sensors registered — Salt Lake City, UT</strong>
+                Pilot network is live. Expanding after pilot completes.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sensor-paths">
+          <div class="sensor-path">
+            <div class="path-tag independent">Path 1 — Independent</div>
+            <div class="path-title">Join as a Proxy Sensor directly</div>
+            <div class="path-desc">
+              No existing platform required. Apply independently to join the Salt Lake City sensor network. You'll be verified, onboarded via the Proxy app, and dispatched to physical verification queries in your area.
+            </div>
+            <a href="#waitlist" class="btn-sensor" onclick="activateSensorTab()">Reserve your sensor spot</a>
+            <p class="sensor-note">Pilot is not yet open. Reserve your spot — we'll reach out when SLC network launches.</p>
+          </div>
+          <div class="sensor-path">
+            <div class="path-tag gig">Path 2 — Existing Gig Workers</div>
+            <div class="path-title">Already driving for DoorDash, Uber, or Instacart?</div>
+            <div class="path-desc">
+              Your routes already position you across the city — exactly where Proxy queries need to be verified. The Proxy app works independently alongside your existing gig platforms. Proxy verifications fit between your existing work, using routes you're already running.
+            </div>
+            <div class="path-gig-callout">
+              Proxy operates as a fully independent app. Your existing gig accounts are unaffected.
+            </div>
+            <a href="#waitlist" class="btn-sensor" onclick="activateSensorTab()">Reserve your sensor spot</a>
+            <p class="sensor-note">Pilot is not yet open. Reserve your spot — we'll reach out when SLC network launches.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1001,36 +1299,49 @@
           <p class="cred-eyebrow">Why Proxy</p>
           <h3 class="cred-title">Built by an operator<br>who <em>lived</em> the problem.</h3>
           <p class="cred-desc">
-            Proxy was built by a healthcare operator and attorney who spent years watching critical decisions fail because the underlying ground truth didn't exist — or couldn't be trusted. The system is designed from the inside out, not from a whiteboard.
+            Proxy wasn't designed from a whiteboard. It was built by a healthcare operator, attorney, and investor who watched the same gap surface independently across every context where agents were being put to work — operating companies, portfolio investments, and his own AI-driven trading systems.
+          </p>
+          <p class="cred-desc">
+            In healthcare, routing decisions failed for lack of real-time ground truth. Across portfolio companies, agents could model and optimize — but couldn't confirm the physical conditions their outputs depended on. Most acutely: running AI-powered systems on information markets, where every position eventually resolved to a physical-world fact that no agent, database, or API could independently verify.
+          </p>
+          <p class="cred-desc" style="margin-top:16px; font-style:italic; color: var(--text3); font-size:14px;">
+            The harder AI gets at reasoning, the more exposed the physical verification gap becomes. Proxy is the layer that closes it.
           </p>
         </div>
         <div class="cred-points">
           <div class="cred-point">
+            <div class="cred-point-icon">🗄️</div>
+            <div class="cred-point-text">
+              <div class="cred-point-title">Ground Truth Database — the compounding moat</div>
+              <div class="cred-point-desc">Every resolved query is stored permanently as discrete Truth Atoms. The database compounds with every query — making each subsequent verification faster, cheaper, and more accurate.</div>
+            </div>
+          </div>
+          <div class="cred-point">
             <div class="cred-point-icon">🔒</div>
             <div class="cred-point-text">
-              <div class="cred-point-title">Provenance on every result</div>
-              <div class="cred-point-desc">Every query returns a SHA-256 provenance hash — independently verifiable chain of custody from observation to output.</div>
+              <div class="cred-point-title">Cryptographic provenance on every result</div>
+              <div class="cred-point-desc">Every query returns a cryptographic provenance record — an independently verifiable chain of custody from physical observation to structured output.</div>
             </div>
           </div>
           <div class="cred-point">
             <div class="cred-point-icon">📊</div>
             <div class="cred-point-text">
               <div class="cred-point-title">Confidence scored, not just returned</div>
-              <div class="cred-point-desc">Accuracy vectors, location verification, and AI proof review combine into a single confidence score agents can act on.</div>
+              <div class="cred-point-desc">Verification history, location proof, and AI review combine into a single confidence score agents can act on — or know to re-query.</div>
             </div>
           </div>
           <div class="cred-point">
             <div class="cred-point-icon">⏱</div>
             <div class="cred-point-text">
               <div class="cred-point-title">Truth decays. We track it.</div>
-              <div class="cred-point-desc">Every result has a half-life. Proxy monitors decay and alerts you before stale data drives a decision.</div>
+              <div class="cred-point-desc">Every result has a half-life calibrated to query type. Proxy monitors decay and alerts you before stale data drives a decision.</div>
             </div>
           </div>
           <div class="cred-point">
             <div class="cred-point-icon">🔌</div>
             <div class="cred-point-text">
               <div class="cred-point-title">Native to your agent stack</div>
-              <div class="cred-point-desc">MCP server, REST API, webhooks, and WebSocket streaming. Works with Claude, LangChain, CrewAI, or any agent framework.</div>
+              <div class="cred-point-desc">REST API and MCP server support. Works with Claude, LangChain, CrewAI, or any agent framework out of the box.</div>
             </div>
           </div>
         </div>
@@ -1043,29 +1354,39 @@
     <div class="container">
       <div class="waitlist-inner">
         <p class="waitlist-eyebrow reveal">Private beta · Salt Lake City</p>
-        <h2 class="waitlist-title reveal">Request early access.</h2>
-        <p class="waitlist-desc reveal">
-          We're opening access to 100 workers and 10 Agent Operator accounts. Healthcare teams, agent builders, and prediction market operators are our first priority.
+        <h2 class="waitlist-title reveal" id="waitlist-title">Request early access.</h2>
+        <p class="waitlist-desc reveal" id="waitlist-desc">
+          We're opening access to a limited number of Agent Operator accounts and Proxy Sensors. Healthcare teams, agent builders, and information market operators are our first priority.
         </p>
+
+        <!-- Tab switcher -->
+        <div class="waitlist-tabs reveal">
+          <button class="waitlist-tab active" id="tab-agent" onclick="switchTab('agent')">I BUILD AGENTS</button>
+          <button class="waitlist-tab sensor-tab" id="tab-sensor" onclick="switchTab('sensor')">I WANT TO BE A SENSOR</button>
+        </div>
+
         <form class="waitlist-form reveal" id="waitlist-form" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="signup_type" id="signup-type-field" value="agent" />
           <input
             class="waitlist-input"
             type="email"
+            name="email"
             placeholder="your@email.com"
             required
             id="email-input"
           />
-          <button class="waitlist-submit" type="submit">JOIN WAITLIST</button>
+          <button class="waitlist-submit" type="submit" id="submit-btn">JOIN WAITLIST</button>
         </form>
         <div class="success-msg" id="success-msg">
           ✓ You're on the list. We'll be in touch soon.
         </div>
-        <p class="waitlist-note reveal">No spam. We'll reach out directly when access opens.</p>
-        <div class="waitlist-tags reveal">
+        <p class="waitlist-note reveal" id="waitlist-note">No spam. We'll reach out directly when access opens.</p>
+        <div class="waitlist-tags reveal" id="waitlist-tags">
           <span class="waitlist-tag">For developers</span>
           <span class="waitlist-tag">For AI agents</span>
           <span class="waitlist-tag">For enterprises</span>
           <span class="waitlist-tag">For healthcare teams</span>
+          <span class="waitlist-tag">For information markets</span>
         </div>
       </div>
     </div>
@@ -1086,27 +1407,111 @@
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
 
-    // Waitlist form
-    async function handleSubmit(e) {
-  e.preventDefault();
-  const email = document.getElementById('email-input').value;
-  await fetch('https://formspree.io/f/mvzwyjvp', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email })
-  });
-  document.getElementById('waitlist-form').style.display = 'none';
-  document.getElementById('success-msg').style.display = 'block';
-}
+    // Tab state
+    let currentTab = 'agent';
 
-    // Smooth scroll for nav links
+    function switchTab(tab) {
+      currentTab = tab;
+      const agentTab = document.getElementById('tab-agent');
+      const sensorTab = document.getElementById('tab-sensor');
+      const submitBtn = document.getElementById('submit-btn');
+      const emailInput = document.getElementById('email-input');
+      const title = document.getElementById('waitlist-title');
+      const desc = document.getElementById('waitlist-desc');
+      const note = document.getElementById('waitlist-note');
+      const tags = document.getElementById('waitlist-tags');
+
+      if (tab === 'agent') {
+        agentTab.classList.add('active');
+        agentTab.classList.remove('sensor-tab');
+        sensorTab.classList.remove('active');
+        submitBtn.className = 'waitlist-submit';
+        submitBtn.textContent = 'JOIN WAITLIST';
+        emailInput.classList.remove('sensor-focus');
+        document.getElementById('signup-type-field').value = 'agent';
+        title.textContent = 'Request early access.';
+        desc.textContent = "We're opening access to a limited number of Agent Operator accounts. Healthcare teams, agent builders, and information market operators are our first priority.";
+        note.textContent = 'No spam. We\'ll reach out directly when access opens.';
+        tags.innerHTML = `
+          <span class="waitlist-tag">For developers</span>
+          <span class="waitlist-tag">For AI agents</span>
+          <span class="waitlist-tag">For enterprises</span>
+          <span class="waitlist-tag">For healthcare teams</span>
+          <span class="waitlist-tag">For information markets</span>`;
+      } else {
+        sensorTab.classList.add('active');
+        agentTab.classList.remove('active');
+        submitBtn.className = 'waitlist-submit sensor-btn';
+        submitBtn.textContent = 'RESERVE SENSOR SPOT';
+        emailInput.classList.add('sensor-focus');
+        document.getElementById('signup-type-field').value = 'sensor';
+        title.textContent = 'Reserve your sensor spot.';
+        desc.textContent = "The Salt Lake City sensor network is not yet open. Reserve your spot now — we'll reach out directly when the pilot launches and onboarding begins.";
+        note.textContent = 'Independent signup and existing gig workers both welcome. Proxy operates as a fully independent app.';
+        tags.innerHTML = `
+          <span class="waitlist-tag">Salt Lake City, UT</span>
+          <span class="waitlist-tag">Independent signup</span>
+          <span class="waitlist-tag">DoorDash / Uber / Instacart welcome</span>
+          <span class="waitlist-tag">Pilot launching soon</span>`;
+      }
+    }
+
+    function activateSensorTab() {
+      switchTab('sensor');
+    }
+
+    // Waitlist form — Formspree endpoint
+    async function handleSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      const form = document.getElementById('waitlist-form');
+      const msg = document.getElementById('success-msg');
+      const submitBtn = document.getElementById('submit-btn');
+
+      // Disable button while submitting
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SENDING...';
+
+      try {
+        const response = await fetch('https://formspree.io/f/mvzwyjvp', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, signup_type: currentTab })
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          msg.style.display = 'block';
+          msg.textContent = currentTab === 'sensor'
+            ? '✓ Sensor spot reserved. We\'ll reach out when the SLC pilot launches.'
+            : '✓ You\'re on the list. We\'ll be in touch soon.';
+        } else {
+          // Re-enable on error
+          submitBtn.disabled = false;
+          submitBtn.textContent = currentTab === 'sensor' ? 'RESERVE SENSOR SPOT' : 'JOIN WAITLIST';
+          msg.style.display = 'block';
+          msg.style.color = 'var(--red)';
+          msg.style.background = 'rgba(255,107,107,0.06)';
+          msg.style.borderColor = 'rgba(255,107,107,0.2)';
+          msg.textContent = 'Something went wrong. Please try again.';
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = currentTab === 'sensor' ? 'RESERVE SENSOR SPOT' : 'JOIN WAITLIST';
+        msg.style.display = 'block';
+        msg.style.color = 'var(--red)';
+        msg.style.background = 'rgba(255,107,107,0.06)';
+        msg.style.borderColor = 'rgba(255,107,107,0.2)';
+        msg.textContent = 'Something went wrong. Please try again.';
+      }
+    }
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
