@@ -1157,6 +1157,150 @@
     </div>
   </section>
 
+  <!-- LIVE NETWORK MAP -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">Live network</p>
+      <h2 class="section-title reveal">Queries running now.<br><em style="font-style:italic; color:var(--amber);">Across the country.</em></h2>
+      <p class="section-sub reveal">Every pin is an active verification market. Hover to see the latest query data from each city.</p>
+      <div class="reveal" style="background:#0d1420; border:1px solid #1e2d45; border-radius:3px; overflow:hidden;">
+        <!-- Header -->
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-bottom:1px solid #1e2d45; background:#111a2c;">
+          <div style="display:flex; gap:6px;">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#28c840;"></div>
+          </div>
+          <span style="font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;letter-spacing:0.06em;">proxy_network · live sensors</span>
+          <div style="display:flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;color:#3dd68c;letter-spacing:0.08em;text-transform:uppercase;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#3dd68c;box-shadow:0 0 6px #3dd68c;animation:pulse-dot 2s ease-in-out infinite;"></div>
+            5 markets active
+          </div>
+        </div>
+        <!-- Map body -->
+        <div style="padding:24px;position:relative;" id="map-svg-wrap">
+          <!-- Tooltip -->
+          <div id="map-tooltip" style="position:absolute;background:#0d1420;border:1px solid #243450;border-radius:3px;padding:12px 16px;pointer-events:none;opacity:0;transition:opacity 0.2s;min-width:190px;z-index:10;">
+            <div id="tt-city" style="font-family:'DM Mono',monospace;font-size:10px;color:#f5a623;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;"></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">last query</span><span id="tt-type" style="font-family:'DM Mono',monospace;font-size:11px;color:#e8edf5;"></span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">confidence</span><span id="tt-conf" style="font-family:'DM Mono',monospace;font-size:11px;color:#f5a623;"></span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;margin-bottom:3px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">resolved</span><span id="tt-time" style="font-family:'DM Mono',monospace;font-size:11px;color:#3dd68c;"></span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">truth atoms</span><span id="tt-atoms" style="font-family:'DM Mono',monospace;font-size:11px;color:#e8edf5;"></span></div>
+          </div>
+          <svg viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+            <defs>
+              <filter id="glow-amber-map"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="glow-green-map"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- State shapes — simplified US regions -->
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M820,80 L840,75 L855,85 L860,100 L850,115 L835,120 L820,110 L815,95 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M790,85 L815,80 L820,95 L810,108 L795,105 L785,95 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M760,90 L788,85 L792,100 L780,112 L762,108 L755,98 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M830,120 L855,115 L862,132 L850,145 L832,140 L825,128 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M800,115 L828,118 L830,135 L815,145 L800,138 L793,125 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M768,110 L798,113 L800,130 L785,142 L768,136 L760,122 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M770,145 L800,140 L808,158 L795,170 L775,165 L765,155 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M800,142 L828,138 L835,155 L820,168 L803,162 L796,150 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M720,160 L768,155 L772,185 L755,200 L725,195 L712,178 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M770,158 L810,153 L815,183 L798,198 L773,193 L765,175 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M812,155 L840,150 L848,178 L832,195 L814,188 L806,170 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M720,198 L758,193 L762,228 L742,245 L718,238 L708,215 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M760,195 L800,190 L806,225 L785,243 L762,236 L754,212 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M800,192 L838,187 L845,220 L825,240 L802,232 L794,208 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M695,245 L722,240 L728,275 L708,292 L688,282 L680,260 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M722,242 L762,237 L768,272 L748,290 L724,282 L716,258 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M762,238 L802,233 L808,268 L788,286 L764,278 L756,254 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M760,288 L800,283 L808,318 L792,345 L775,350 L762,335 L752,308 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M580,120 L618,115 L622,148 L604,162 L582,155 L572,138 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M620,118 L658,113 L662,146 L644,160 L622,153 L614,136 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M660,115 L698,110 L702,143 L684,157 L662,150 L654,133 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M700,112 L738,107 L742,140 L724,154 L702,147 L694,130 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M578,155 L616,150 L620,183 L602,197 L580,190 L570,173 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M618,152 L656,147 L660,180 L642,194 L620,187 L612,170 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M658,149 L696,144 L700,177 L682,191 L660,184 L652,167 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M698,146 L736,141 L740,174 L722,188 L700,181 L692,164 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M440,120 L478,115 L482,155 L462,170 L440,163 L430,140 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M480,118 L518,113 L522,153 L502,168 L480,161 L472,138 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M520,116 L558,111 L562,151 L542,166 L520,159 L512,136 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M438,163 L476,158 L480,198 L460,213 L438,206 L428,183 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M478,161 L516,156 L520,196 L500,211 L478,204 L470,181 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M518,159 L556,154 L560,194 L540,209 L518,202 L510,179 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M436,206 L474,201 L478,241 L458,256 L436,249 L426,226 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M476,204 L514,199 L518,239 L498,254 L476,247 L468,224 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M516,202 L554,197 L558,237 L538,252 L516,245 L508,222 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M434,249 L472,244 L476,284 L456,299 L434,292 L424,269 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M474,247 L512,242 L516,282 L496,297 L474,290 L466,267 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M514,245 L552,240 L556,280 L536,295 L514,288 L506,265 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M554,243 L594,238 L598,275 L578,292 L556,283 L547,262 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M432,292 L556,285 L562,322 L538,342 L430,334 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M285,130 L323,125 L327,175 L305,192 L283,185 L273,155 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M325,128 L363,123 L367,173 L345,190 L323,183 L315,153 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M283,188 L325,183 L329,233 L307,250 L285,243 L275,215 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M327,186 L365,181 L369,231 L347,248 L325,241 L317,213 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M281,246 L323,241 L327,291 L305,308 L283,301 L273,273 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M325,244 L363,239 L367,289 L345,306 L323,299 L315,271 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M200,240 L280,235 L285,295 L262,315 L198,308 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M198,310 L285,303 L290,360 L265,380 L196,372 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M285,297 L328,292 L332,342 L310,362 L287,353 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M85,120 L125,90 L148,105 L152,160 L128,178 L88,170 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M105,178 L148,163 L155,215 L130,235 L105,228 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M108,232 L152,218 L158,270 L133,290 L108,282 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M85,80 L128,60 L155,75 L152,118 L125,128 L88,118 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M155,72 L195,55 L215,70 L218,112 L195,125 L155,118 Z"/>
+            <path fill="#111a2c" stroke="#1e2d45" stroke-width="0.8" d="M216,68 L258,52 L278,68 L280,110 L258,122 L218,115 Z"/>
+            <!-- SLC — amber primary pilot -->
+            <g style="cursor:pointer;" onmouseenter="showMapTip(event,'SLC, UT','pharmacy_inventory','0.91','14 min ago','6')" onmouseleave="hideMapTip()">
+              <circle cx="295" cy="210" r="16" fill="none" stroke="#f5a623" stroke-width="1.2" opacity="0.35" style="animation:map-ring-amber 2.5s ease-in-out infinite;"/>
+              <circle cx="295" cy="210" r="5" fill="#f5a623" filter="url(#glow-amber-map)"/>
+            </g>
+            <!-- Phoenix -->
+            <g style="cursor:pointer;" onmouseenter="showMapTip(event,'Phoenix, AZ','drug_availability','0.87','22 min ago','5')" onmouseleave="hideMapTip()">
+              <circle cx="240" cy="320" r="12" fill="none" stroke="#3dd68c" stroke-width="1" opacity="0.3" style="animation:map-ring-green 2.5s ease-in-out infinite 0.5s;"/>
+              <circle cx="240" cy="320" r="4" fill="#3dd68c" filter="url(#glow-green-map)"/>
+            </g>
+            <!-- Austin -->
+            <g style="cursor:pointer;" onmouseenter="showMapTip(event,'Austin, TX','retail_inventory','0.88','18 min ago','4')" onmouseleave="hideMapTip()">
+              <circle cx="490" cy="330" r="12" fill="none" stroke="#3dd68c" stroke-width="1" opacity="0.3" style="animation:map-ring-green 2.5s ease-in-out infinite 1s;"/>
+              <circle cx="490" cy="330" r="4" fill="#3dd68c" filter="url(#glow-green-map)"/>
+            </g>
+            <!-- Dallas -->
+            <g style="cursor:pointer;" onmouseenter="showMapTip(event,'Dallas, TX','formulary_check','0.89','19 min ago','7')" onmouseleave="hideMapTip()">
+              <circle cx="500" cy="295" r="12" fill="none" stroke="#3dd68c" stroke-width="1" opacity="0.3" style="animation:map-ring-green 2.5s ease-in-out infinite 1.5s;"/>
+              <circle cx="500" cy="295" r="4" fill="#3dd68c" filter="url(#glow-green-map)"/>
+            </g>
+            <!-- Denver -->
+            <g style="cursor:pointer;" onmouseenter="showMapTip(event,'Denver, CO','market_resolution','0.94','31 min ago','3')" onmouseleave="hideMapTip()">
+              <circle cx="380" cy="215" r="12" fill="none" stroke="#3dd68c" stroke-width="1" opacity="0.3" style="animation:map-ring-green 2.5s ease-in-out infinite 2s;"/>
+              <circle cx="380" cy="215" r="4" fill="#3dd68c" filter="url(#glow-green-map)"/>
+            </g>
+            <!-- Labels -->
+            <text x="270" y="228" fill="#4d607e" font-family="monospace" font-size="9" letter-spacing="0.04em">SLC</text>
+            <text x="218" y="338" fill="#4d607e" font-family="monospace" font-size="9" letter-spacing="0.04em">PHX</text>
+            <text x="468" y="348" fill="#4d607e" font-family="monospace" font-size="9" letter-spacing="0.04em">AUS</text>
+            <text x="478" y="285" fill="#4d607e" font-family="monospace" font-size="9" letter-spacing="0.04em">DAL</text>
+            <text x="358" y="233" fill="#4d607e" font-family="monospace" font-size="9" letter-spacing="0.04em">DEN</text>
+          </svg>
+          <style>
+            @keyframes map-ring-amber { 0%,100%{opacity:.4;r:14} 50%{opacity:.1;r:20} }
+            @keyframes map-ring-green { 0%,100%{opacity:.3;r:10} 50%{opacity:.08;r:16} }
+          </style>
+        </div>
+        <!-- Legend -->
+        <div style="display:flex;gap:24px;padding:14px 24px;border-top:1px solid #1e2d45;background:#111a2c;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#f5a623;box-shadow:0 0 6px #f5a623;flex-shrink:0;"></div>
+            SLC — active pilot, 4 sensors registered
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#3dd68c;box-shadow:0 0 6px #3dd68c;flex-shrink:0;"></div>
+            Ticker cities — active verification
+          </div>
+          <div style="margin-left:auto;font-family:'DM Mono',monospace;font-size:11px;color:#4d607e;">Hover pins to see latest query data</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- VISUAL FLOW -->
   <section style="padding: 0 0 80px; background-color: #080c14;">
     <div class="container">
@@ -1173,7 +1317,7 @@
           <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px;">Agent asks</div>
           <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Any agent, operator, or autonomous system posts a structured query with location, query type, and price.</div>
           <div style="margin-top:20px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; padding:10px 12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-align:left; line-height:1.6;">
-            "Is Leqembi in stock<br>within 5mi of SLC?"
+            "Is Ozempic 0.5mg in stock<br>within 5mi of SLC?"
           </div>
         </div>
 
@@ -1466,7 +1610,7 @@
           </div>
           <div class="sensor-path">
             <div class="path-tag gig">Path 2 — Existing Gig Workers</div>
-            <div class="path-title">Already driving for DoorDash, Uber, or Instacart?</div>
+            <div class="path-title">Already driving for <span style="color:var(--amber);">DoorDash</span>, <span style="color:var(--amber);">Uber</span>, or <span style="color:var(--amber);">Instacart</span>?</div>
             <div class="path-desc">
               Your routes already position you across the city — exactly where Proxy queries need to be verified. The Proxy app works independently alongside your existing gig platforms. Proxy verifications fit between your existing work, using routes you're already running.
             </div>
@@ -1525,10 +1669,10 @@
         <div style="background:var(--bg2); border:1px solid var(--border); border-radius:3px 3px 0 0; padding:28px 36px; display:grid; grid-template-columns: 1fr auto; gap:32px; align-items:center;">
           <div>
             <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">pharmacy_inventory · SLC, UT</div>
-            <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#ffffff; margin-bottom:8px;">Claude agent asked: "Is Leqembi 200mg in stock within 5 miles of Salt Lake City?"</div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#ffffff; margin-bottom:8px;">Claude agent asked: "Is Ozempic 0.5mg pen in stock within 5 miles of Salt Lake City?"</div>
             <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.6; margin-bottom:16px;">Proxy dispatched a sensor to CVS, 400 N 900 E. Sensor submitted geotagged photo proof and structured schema fields. Result returned in 18 minutes.</div>
             <div style="background:var(--green-bg); border:1px solid rgba(61,214,140,0.2); border-radius:3px; padding:12px 16px; font-family:'DM Mono',monospace; font-size:13px; color:var(--green);">
-              ✅ Leqembi is in stock at CVS. Verified 18 min ago. High confidence. Safe to route patient.
+              ✅ Ozempic 0.5mg is in stock at CVS. Verified 18 min ago. High confidence. Safe to route patient.
             </div>
           </div>
           <div style="display:flex; flex-direction:column; gap:12px; min-width:140px;">
@@ -1773,6 +1917,30 @@
   </footer>
 
   <script>
+    // Map tooltip
+    function showMapTip(e, city, type, conf, time, atoms) {
+      const tip = document.getElementById('map-tooltip');
+      const wrap = document.getElementById('map-svg-wrap');
+      if (!tip || !wrap) return;
+      document.getElementById('tt-city').textContent  = city;
+      document.getElementById('tt-type').textContent  = type;
+      document.getElementById('tt-conf').textContent  = conf;
+      document.getElementById('tt-time').textContent  = time;
+      document.getElementById('tt-atoms').textContent = atoms;
+      const rect = wrap.getBoundingClientRect();
+      let x = e.clientX - rect.left + 12;
+      let y = e.clientY - rect.top - 20;
+      if (x + 210 > wrap.offsetWidth) x = x - 220;
+      if (y < 0) y = 8;
+      tip.style.left = x + 'px';
+      tip.style.top  = y + 'px';
+      tip.style.opacity = '1';
+    }
+    function hideMapTip() {
+      const tip = document.getElementById('map-tooltip');
+      if (tip) tip.style.opacity = '0';
+    }
+
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
