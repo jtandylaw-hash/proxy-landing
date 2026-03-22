@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #080c14;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proxy — Reality as a Service™</title>
-  <meta name="description" content="The physical-world data layer for AI agents. Query reality. Get structured, verifiable truth from the real world." />
+  <meta name="theme-color" content="#080c14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Reality Verification API for AI Agents | Proxy – Human-Sourced Ground Truth</title>
+  <meta name="description" content="Proxy is the physical-world data layer for AI agents. Query reality, dispatch verified human sensors, and get structured ground truth back in minutes — confidence-scored, provenance-tracked, agent-native." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -30,15 +32,27 @@
       --red:      #ff6b6b;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      background-color: #080c14;
+      min-height: 100%;
+    }
 
     body {
+      background-color: #080c14;
       background: var(--bg);
-      color: var(--text);
+      color: #e8edf5;
       font-family: 'DM Sans', sans-serif;
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Ensure every section has dark background explicitly */
+    section, nav, footer, .hero, .section, .example-section,
+    .use-cases, .sensor-section, .credibility, .waitlist {
+      background-color: #080c14;
     }
 
     body::before {
@@ -208,7 +222,7 @@
       font-size: clamp(44px, 6vw, 76px);
       font-weight: 400;
       line-height: 1.05;
-      color: var(--text);
+      color: #ffffff;
       letter-spacing: -0.02em;
       max-width: 800px;
       margin-bottom: 28px;
@@ -306,7 +320,7 @@
       font-family: 'Instrument Serif', serif;
       font-size: clamp(30px, 3.5vw, 44px);
       font-weight: 400;
-      color: var(--text);
+      color: #ffffff;
       line-height: 1.1;
       letter-spacing: -0.015em;
       margin-bottom: 16px;
@@ -353,7 +367,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 600;
-      color: var(--text);
+      color: #ffffff;
       margin-bottom: 10px;
     }
     .bullet-desc {
@@ -435,7 +449,7 @@
       font-family: 'Instrument Serif', serif;
       font-size: 32px;
       font-weight: 400;
-      color: var(--text);
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -0.01em;
       margin-bottom: 20px;
@@ -507,7 +521,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 17px;
       font-weight: 600;
-      color: var(--text);
+      color: #ffffff;
       margin-bottom: 12px;
       line-height: 1.3;
     }
@@ -560,7 +574,7 @@
       font-family: 'Instrument Serif', serif;
       font-size: clamp(26px, 3vw, 38px);
       font-weight: 400;
-      color: var(--text);
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -0.01em;
       margin-bottom: 16px;
@@ -603,7 +617,7 @@
     .sensor-stat-label strong {
       display: block;
       font-weight: 600;
-      color: var(--text);
+      color: #ffffff;
       font-size: 13px;
       margin-bottom: 2px;
     }
@@ -645,7 +659,7 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 17px;
       font-weight: 600;
-      color: var(--text);
+      color: #ffffff;
       margin-bottom: 10px;
       line-height: 1.3;
     }
@@ -728,7 +742,7 @@
       font-family: 'Instrument Serif', serif;
       font-size: 36px;
       font-weight: 400;
-      color: var(--text);
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -0.01em;
       margin-bottom: 20px;
@@ -765,7 +779,7 @@
     .cred-point-title {
       font-size: 14px;
       font-weight: 600;
-      color: var(--text);
+      color: #ffffff;
       margin-bottom: 4px;
     }
     .cred-point-desc {
@@ -794,7 +808,7 @@
       font-family: 'Instrument Serif', serif;
       font-size: clamp(28px, 3vw, 40px);
       font-weight: 400;
-      color: var(--text);
+      color: #ffffff;
       line-height: 1.15;
       letter-spacing: -0.015em;
       margin-bottom: 16px;
@@ -1034,10 +1048,15 @@
       .sensor-path { padding: 32px; }
       .waitlist-form { flex-direction: column; }
       .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .who-grid { grid-template-columns: 1fr !important; }
+      .who-grid > div:first-child { border-radius: 3px 3px 0 0 !important; }
+      .who-grid > div:last-child  { border-radius: 0 0 3px 3px !important; }
+      body::before { opacity: 0.15; }
+      body::after  { opacity: 0.2; }
     }
   </style>
 </head>
-<body>
+<body style="background-color: #080c14; color: #e8edf5;">
 
   <!-- NAV -->
   <nav>
@@ -1050,8 +1069,8 @@
         <span class="nav-raas">Reality as a Service<sup>™</sup></span>
       </div>
       <div class="nav-right">
-        <a href="#sensors" class="nav-sensor-link">Become a Sensor</a>
-        <a href="#waitlist" class="nav-cta">REQUEST ACCESS</a>
+        <a href="#sensors" class="nav-sensor-link">Become a Sensor ↓</a>
+        <a href="#waitlist" class="nav-cta">REQUEST API ACCESS</a>
       </div>
     </div>
   </nav>
@@ -1074,7 +1093,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" style="background-color: #080c14;">
     <div class="container">
       <div class="hero-badge">Private Beta · Salt Lake City</div>
       <p class="hero-raas">Reality as a Service<sup>™</sup></p>
@@ -1083,6 +1102,13 @@
       </h1>
       <p class="hero-sub">
         Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned as decision-grade data your agents can act on.
+      </p>
+      <p class="hero-plain reveal" style="font-size:16px; font-weight:400; color:var(--text2); max-width:500px; line-height:1.65; margin-bottom:20px; margin-top:-24px; opacity:0; animation: fade-up 0.7s ease forwards 0.35s;">
+        When an agent needs to know something about the physical world, Proxy sends a verified human to check and returns the answer as structured data.
+      </p>
+      <p class="hero-status reveal" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.06em; margin-bottom:28px; opacity:0; animation: fade-up 0.7s ease forwards 0.38s;">
+        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--green); margin-right:8px; vertical-align:middle; box-shadow: 0 0 6px var(--green);"></span>
+        SLC pilot network registered and operational. Agent Operator access opening shortly.
       </p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn-primary">Join early access</a>
@@ -1110,7 +1136,7 @@
           <div class="bullet-num">02</div>
           <span class="bullet-icon">👁</span>
           <div class="bullet-title">Proxy dispatches human sensors</div>
-          <div class="bullet-desc">When an agent needs physical-world data, Proxy matches a geo-verified sensor, dispatches them to the location, and collects structured proof.</div>
+          <div class="bullet-desc">When an agent needs physical-world data, Proxy matches a geo-verified sensor, dispatches them to the location, and collects structured proof. Agents can query, set the price, make the payment, and manage physical-world verifications autonomously — no human in the loop.</div>
         </div>
         <div class="bullet-card reveal reveal-delay-2">
           <div class="bullet-num">03</div>
@@ -1220,6 +1246,37 @@
             <li>What is the verified shelf price vs. advertised price?</li>
             <li>Is the promotional display executing as planned at this location?</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR -->
+  <section style="padding: 0 0 80px;">
+    <div class="container">
+      <div class="reveal" style="background:var(--bg2); border:1px solid var(--border); border-radius:3px; padding: 40px 48px;">
+        <p class="section-label" style="margin-bottom:28px;">Who this is for</p>
+        <div class="who-grid reveal" style="display:grid; grid-template-columns: repeat(4,1fr); gap:2px;">
+          <div style="padding:24px 28px; background:var(--bg3); border:1px solid var(--border); border-radius:3px 0 0 3px;">
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Agent Builders</div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px; line-height:1.3;">You build AI agents that hit a wall when they need physical-world data.</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Proxy gives your agent a REST API or MCP call that returns verified ground truth in under 20 minutes.</div>
+          </div>
+          <div style="padding:24px 28px; background:var(--bg3); border:1px solid var(--border); border-radius:0;">
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--blue); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Information Market Operators</div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px; line-height:1.3;">Your positions resolve on physical-world facts no agent can currently verify.</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Proxy gives your trading systems a trusted, provenance-backed ground truth layer for real-world resolution.</div>
+          </div>
+          <div style="padding:24px 28px; background:var(--bg3); border:1px solid var(--border); border-radius:0;">
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Healthcare Operators</div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px; line-height:1.3;">Your routing decisions depend on real-time availability data that doesn't exist anywhere.</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Proxy dispatches verified sensors to pharmacies and infusion centers and returns structured, confidence-scored results.</div>
+          </div>
+          <div style="padding:24px 28px; background:var(--bg3); border:1px solid var(--border); border-radius:0 3px 3px 0;">
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">Compliance &amp; Audit Teams</div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px; line-height:1.3;">Your audits require observed, time-stamped physical evidence — not system-of-record exports.</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Proxy returns cryptographically chained evidence from physical observation to structured output — presentable, not just referenceable.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1349,6 +1406,63 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="max-width: 720px; margin: 0 auto;">
+        <p class="section-label" style="text-align:center; margin-bottom: 12px;">Common questions</p>
+        <h2 class="section-title reveal" style="text-align:center; margin-bottom: 48px;">What people ask<br>before they sign up.</h2>
+        <div style="display:flex; flex-direction:column; gap:2px;">
+
+          <div style="background:var(--bg2); border:1px solid var(--border); border-radius:3px 3px 0 0; padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">Is this just gig work with a fancier name?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">No. Gig platforms dispatch humans to complete tasks. Proxy dispatches human sensors to return structured, confidence-scored, provenance-verified data that AI agents consume directly. Every observation is stored permanently as a Truth Atom in the Ground Truth Database. The sensor is not the product — the data layer is.</div>
+          </div>
+
+          <div style="background:var(--bg2); border:1px solid var(--border); border-left:1px solid var(--border); padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">Can an AI agent use Proxy without a human operator in the loop?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">Yes. Agents can query, set the price, make the payment, and manage physical-world verifications autonomously via REST API or MCP server — no human required. The Agent Operator role exists for teams who want oversight, but it is not required.</div>
+          </div>
+
+          <div style="background:var(--bg2); border:1px solid var(--border); padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">How do you know the sensor data is accurate?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">Every result carries a confidence score combining the sensor's accuracy history, AI-assisted proof review, and location verification. Results include a cryptographic provenance record — a chain of custody from physical observation to structured output. Shadow queries (known-answer tests dispatched anonymously) continuously calibrate sensor accuracy without their knowledge.</div>
+          </div>
+
+          <div style="background:var(--bg2); border:1px solid var(--border); padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">What happens when truth goes stale?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">Every Truth Atom has a calibrated half-life based on query type — drug availability decays faster than permit status, for example. Proxy tracks decay in real time and alerts Agent Operators before confidence drops below action threshold. You never act on stale data without knowing it.</div>
+          </div>
+
+          <div style="background:var(--bg2); border:1px solid var(--border); border-radius:0 0 3px 3px; padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">Where is Proxy available and what's the rollout plan?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">Salt Lake City pilot is live with a registered sensor network. Santiago, Chile is next in partnership with an established technology operator. Additional markets open after each pilot is proven. We expand depth before breadth — one working city beats ten half-working ones.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILT FOR -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <p style="font-family:'DM Mono',monospace; font-size:11px; color:#4d607e; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:32px;">Works with your agent stack</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; align-items:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">Claude</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">LangChain</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">CrewAI</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">REST API</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">MCP Server</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">Webhooks</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#f5a623; border:1px solid rgba(245,166,35,0.3); padding:10px 20px; border-radius:3px; background:rgba(245,166,35,0.07); letter-spacing:0.06em;">Polymarket</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:#f5a623; border:1px solid rgba(245,166,35,0.3); padding:10px 20px; border-radius:3px; background:rgba(245,166,35,0.07); letter-spacing:0.06em;">Kalshi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WAITLIST -->
   <section class="waitlist" id="waitlist">
     <div class="container">
@@ -1385,7 +1499,7 @@
           <span class="waitlist-tag">For developers</span>
           <span class="waitlist-tag">For AI agents</span>
           <span class="waitlist-tag">For enterprises</span>
-          <span class="waitlist-tag">For healthcare teams</span>
+          <span class="waitlist-tag">For compliance teams</span>
           <span class="waitlist-tag">For information markets</span>
         </div>
       </div>
@@ -1441,7 +1555,7 @@
           <span class="waitlist-tag">For developers</span>
           <span class="waitlist-tag">For AI agents</span>
           <span class="waitlist-tag">For enterprises</span>
-          <span class="waitlist-tag">For healthcare teams</span>
+          <span class="waitlist-tag">For compliance teams</span>
           <span class="waitlist-tag">For information markets</span>`;
       } else {
         sensorTab.classList.add('active');
