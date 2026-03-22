@@ -1053,6 +1053,12 @@
       .who-grid > div:last-child  { border-radius: 0 0 3px 3px !important; }
       body::before { opacity: 0.15; }
       body::after  { opacity: 0.2; }
+      .flow-row { flex-direction: column !important; }
+      .flow-row > div { border-radius: 3px !important; border: 1px solid var(--border) !important; margin-bottom: 2px; }
+      .flow-arrow { display: none !important; }
+      .why-now-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 36px 28px !important; }
+      .receipt-row { grid-template-columns: 1fr !important; }
+      .receipt-stats { flex-direction: row !important; justify-content: space-between; }
     }
   </style>
 </head>
@@ -1103,7 +1109,10 @@
       <p class="hero-sub">
         Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned as decision-grade data your agents can act on.
       </p>
-      <p class="hero-plain reveal" style="font-size:16px; font-weight:400; color:var(--text2); max-width:500px; line-height:1.65; margin-bottom:20px; margin-top:-24px; opacity:0; animation: fade-up 0.7s ease forwards 0.35s;">
+      <p class="hero-plain reveal" style="font-size:16px; font-weight:400; color:var(--text2); max-width:520px; line-height:1.65; margin-bottom:8px; margin-top:-24px; opacity:0; animation: fade-up 0.7s ease forwards 0.35s;">
+        We dispatch vetted human sensors to capture structured, provenance-backed physical truth for AI agents — in minutes.
+      </p>
+      <p class="hero-plain reveal" style="font-size:14px; font-weight:300; color:var(--text3); max-width:520px; line-height:1.65; margin-bottom:20px; opacity:0; animation: fade-up 0.7s ease forwards 0.38s;">
         When an agent needs to know something about the physical world, Proxy sends a verified human to check and returns the answer as structured data.
       </p>
       <p class="hero-status reveal" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.06em; margin-bottom:28px; opacity:0; animation: fade-up 0.7s ease forwards 0.38s;">
@@ -1145,6 +1154,87 @@
           <div class="bullet-desc">Every query returns typed data with a confidence score, cryptographic provenance record, and human-readable summary. Decision-grade data, not opinions.</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- VISUAL FLOW -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom: 48px;">
+        <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:12px;">The loop</p>
+        <h2 class="section-title" style="margin-bottom:8px;">Four steps.<br>One verified answer.</h2>
+      </div>
+      <div class="reveal" style="display:flex; align-items:stretch; gap:0; position:relative;">
+
+        <!-- Step 1 -->
+        <div style="flex:1; background:var(--bg2); border:1px solid var(--border); border-radius:3px 0 0 3px; padding:36px 28px; position:relative; text-align:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">01</div>
+          <div style="font-size:32px; margin-bottom:16px;">🤖</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px;">Agent asks</div>
+          <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Any agent, operator, or autonomous system posts a structured query with location, query type, and price.</div>
+          <div style="margin-top:20px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; padding:10px 12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-align:left; line-height:1.6;">
+            "Is Leqembi in stock<br>within 5mi of SLC?"
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; justify-content:center; width:32px; background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); flex-shrink:0; z-index:1;">
+          <span style="font-family:'DM Mono',monospace; font-size:16px; color:var(--border2);">→</span>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="flex:1; background:var(--bg2); border:1px solid var(--border); border-left:none; padding:36px 28px; text-align:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">02</div>
+          <div style="font-size:32px; margin-bottom:16px;">📡</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px;">Proxy dispatches</div>
+          <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Geo-matching finds the closest verified sensor. Push notification sent. Escrow held. 60-second dispatch.</div>
+          <div style="margin-top:20px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; padding:10px 12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--blue); text-align:left; line-height:1.6;">
+            Sensor matched · 0.4mi<br>Dispatched · escrow held
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; justify-content:center; width:32px; background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); flex-shrink:0; z-index:1;">
+          <span style="font-family:'DM Mono',monospace; font-size:16px; color:var(--border2);">→</span>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="flex:1; background:var(--bg2); border:1px solid var(--border); border-left:none; padding:36px 28px; text-align:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">03</div>
+          <div style="font-size:32px; margin-bottom:16px;">👁</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px;">Human observes</div>
+          <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Sensor visits the location. Submits geotagged photo proof and structured schema fields via the Proxy app.</div>
+          <div style="margin-top:20px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; padding:10px 12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--green); text-align:left; line-height:1.6;">
+            📍 CVS, 400 N 900 E<br>📷 Photo proof submitted
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div style="display:flex; align-items:center; justify-content:center; width:32px; background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); flex-shrink:0; z-index:1;">
+          <span style="font-family:'DM Mono',monospace; font-size:16px; color:var(--border2);">→</span>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="flex:1; background:var(--bg2); border:1px solid var(--border); border-left:none; border-radius:0 3px 3px 0; padding:36px 28px; text-align:center;">
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">04</div>
+          <div style="font-size:32px; margin-bottom:16px;">⚡</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:8px;">Truth returned</div>
+          <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Structured JSON with confidence score, provenance record, and human summary. Stored permanently as Truth Atoms.</div>
+          <div style="margin-top:20px; background:var(--bg3); border:1px solid var(--border); border-radius:2px; padding:10px 12px; font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-align:left; line-height:1.6;">
+            in_stock: true<br>confidence: 0.91
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mobile version - stacked -->
+      <style>
+        @media (max-width: 768px) {
+          .flow-desktop { display: none !important; }
+          .flow-mobile  { display: flex !important; }
+        }
+        .flow-mobile { display: none; }
+      </style>
     </div>
   </section>
 
@@ -1251,6 +1341,49 @@
     </div>
   </section>
 
+  <!-- WHY NOW -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); border:1px solid var(--border); border-radius:3px; padding: 56px 64px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-60px; right:-60px; width:240px; height:240px; border-radius:50%; background: radial-gradient(circle, rgba(61,214,140,0.06) 0%, transparent 70%); pointer-events:none;"></div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:64px; align-items:center;">
+          <div>
+            <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:20px;">Why now</p>
+            <h2 class="section-title" style="margin-bottom:20px;">The gap just became<br><em style="font-style:italic; color:var(--green);">impossible to ignore.</em></h2>
+            <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:16px;">AI agents can now reason, plan, and execute with extraordinary precision. They can write code, negotiate contracts, analyze markets, and route complex decisions — entirely autonomously.</p>
+            <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:16px;">But every agentic workflow eventually hits the same wall. The moment an agent needs to verify something in the physical world — a drug in stock, a price on a shelf, a condition at a site — every existing tool fails.</p>
+            <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px; margin-top:24px;">Physical intelligence</p>
+            <p style="font-size:15px; font-weight:400; color:var(--text2); line-height:1.7; margin-bottom:12px;">As agents get smarter, the demand for physical intelligence — verified, structured truth from the real world — becomes the binding constraint. Every other layer of the agent stack is solved. This one isn't.</p>
+            <p style="font-size:15px; font-style:italic; color:var(--text3); line-height:1.7;">Andrej Karpathy named this gap unprompted on the No Priors podcast: "I'm surprised we don't have information markets where taking a photo from somewhere costs $10. Agents trying to resolve real-world positions need that." <a href="https://youtu.be/kwSVtQ7dziU?si=ZwZpAEup-lx_P1SB" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-decoration:none; letter-spacing:0.04em; font-style:normal; white-space:nowrap;">↗ Watch on YouTube</a></p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; gap:16px; align-items:flex-start; background:var(--bg); border:1px solid var(--border); border-radius:3px; padding:20px 24px;">
+              <div style="font-size:22px; flex-shrink:0; margin-top:2px;">🧠</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:6px;">AI can reason</div>
+                <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Models can plan, analyze, and decide with remarkable precision across virtually any domain.</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:16px; align-items:flex-start; background:var(--bg); border:1px solid rgba(255,107,107,0.2); border-radius:3px; padding:20px 24px;">
+              <div style="font-size:22px; flex-shrink:0; margin-top:2px;">🚫</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:6px;">AI cannot observe reality</div>
+                <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">No model can walk into a pharmacy, check a shelf, or verify a physical condition. That wall is structural.</div>
+              </div>
+            </div>
+            <div style="display:flex; gap:16px; align-items:flex-start; background:var(--bg); border:1px solid rgba(61,214,140,0.2); border-radius:3px; padding:20px 24px;">
+              <div style="font-size:22px; flex-shrink:0; margin-top:2px;">✅</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:#ffffff; margin-bottom:6px;">Proxy closes that gap</div>
+                <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.55;">Human sensors act as the physical observation layer — returning structured, verified truth that agents can act on.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHO THIS IS FOR -->
   <section style="padding: 0 0 80px;">
     <div class="container">
@@ -1345,6 +1478,129 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- PILOT PULSE -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="background: var(--bg2); border: 1px solid var(--border); border-radius: 3px; padding: 36px 48px; display: flex; gap: 0; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom: 4px;">
+          <span style="width:8px; height:8px; border-radius:50%; background:var(--green); display:inline-block; box-shadow: 0 0 8px var(--green); flex-shrink:0;"></span>
+          <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase;">Pilot Live — Salt Lake City, UT</span>
+        </div>
+        <div style="display:flex; gap:48px; flex-wrap:wrap; margin-top: 24px; width:100%;">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:28px; font-weight:500; color:#ffffff; margin-bottom:4px;">4</div>
+            <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.06em;">Sensors registered</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:28px; font-weight:500; color:#ffffff; margin-bottom:4px;">0.91</div>
+            <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.06em;">Avg confidence score</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:28px; font-weight:500; color:#ffffff; margin-bottom:4px;">18 min</div>
+            <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.06em;">Avg resolution time</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:28px; font-weight:500; color:#ffffff; margin-bottom:4px;">SLC → SCL</div>
+            <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.06em;">Pilot cities — Santiago next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT QUERIES / RECEIPTS -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div style="margin-bottom:40px; reveal">
+        <p class="section-label reveal">Recent queries</p>
+        <h2 class="section-title reveal">The loop is running.<br>These are the receipts.</h2>
+        <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-top:12px;" class="reveal">Every completed query is a proof point. Every receipt is evidence the loop works.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:2px;" class="reveal">
+
+        <!-- Receipt 1 -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:3px 3px 0 0; padding:28px 36px; display:grid; grid-template-columns: 1fr auto; gap:32px; align-items:center;">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">pharmacy_inventory · SLC, UT</div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#ffffff; margin-bottom:8px;">Claude agent asked: "Is Leqembi 200mg in stock within 5 miles of Salt Lake City?"</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.6; margin-bottom:16px;">Proxy dispatched a sensor to CVS, 400 N 900 E. Sensor submitted geotagged photo proof and structured schema fields. Result returned in 18 minutes.</div>
+            <div style="background:var(--green-bg); border:1px solid rgba(61,214,140,0.2); border-radius:3px; padding:12px 16px; font-family:'DM Mono',monospace; font-size:13px; color:var(--green);">
+              ✅ Leqembi is in stock at CVS. Verified 18 min ago. High confidence. Safe to route patient.
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px; min-width:140px;">
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--amber);">0.91</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">confidence</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">18 min</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">resolution</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">6</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">truth atoms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt 2 — information markets -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; padding:28px 36px; display:grid; grid-template-columns: 1fr auto; gap:32px; align-items:center;">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--blue); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">market_resolution · SLC, UT</div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#ffffff; margin-bottom:8px;">Agent asked: "Verify product launch availability at retail location for market resolution."</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.6; margin-bottom:16px;">Proxy dispatched a sensor to the specified retail location. Sensor submitted photographic proof of shelf presence and structured availability fields. Resolution returned in 31 minutes.</div>
+            <div style="background:var(--green-bg); border:1px solid rgba(61,214,140,0.2); border-radius:3px; padding:12px 16px; font-family:'DM Mono',monospace; font-size:13px; color:var(--green);">
+              ✅ Product confirmed in stock at retail. Verified 31 min ago. High confidence. Market resolves YES.
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px; min-width:140px;">
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--amber);">0.94</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">confidence</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">31 min</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">resolution</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">3</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">truth atoms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Receipt 3 — compliance -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-radius:0 0 3px 3px; padding:28px 36px; display:grid; grid-template-columns: 1fr auto; gap:32px; align-items:center;">
+          <div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:12px;">formulary_check · SLC, UT</div>
+            <div style="font-family:'DM Sans',sans-serif; font-size:16px; font-weight:600; color:#ffffff; margin-bottom:8px;">Agent asked: "Confirm drug storage conditions and compliance at dispensing location."</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.6; margin-bottom:16px;">Proxy dispatched a sensor to the dispensing location. Sensor verified storage conditions and submitted structured compliance fields with photo evidence. Result returned in 22 minutes.</div>
+            <div style="background:var(--green-bg); border:1px solid rgba(61,214,140,0.2); border-radius:3px; padding:12px 16px; font-family:'DM Mono',monospace; font-size:13px; color:var(--green);">
+              ✅ Storage conditions verified. Compliance confirmed. High confidence. Audit-ready evidence returned.
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px; min-width:140px;">
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--amber);">0.89</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">confidence</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">22 min</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">resolution</div>
+            </div>
+            <div style="text-align:center; background:var(--bg3); border:1px solid var(--border); border-radius:3px; padding:12px 16px;">
+              <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:#ffffff;">5</div>
+              <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-top:4px;">truth atoms</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); text-align:center; margin-top:20px; letter-spacing:0.04em;" class="reveal">More receipts posted at <a href="https://x.com/jtandylaw" style="color:var(--amber); text-decoration:none;">@jtandylaw</a> as the pilot runs.</p>
     </div>
   </section>
 
