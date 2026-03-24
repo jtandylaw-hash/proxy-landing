@@ -2241,6 +2241,80 @@
         </div>
         <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.04em;">Every query tightens the loop. The same pattern Jensen built with CUDA — the install base defines the architecture.</p>
       </div>
+
+      <!-- Visual Flywheel Diagram -->
+      <div class="reveal" style="margin-top:48px; display:flex; justify-content:center; align-items:center;">
+        <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:520px; height:auto; display:block;">
+          <defs>
+            <marker id="arrowG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#3dd68c" opacity="0.6"/>
+            </marker>
+            <marker id="arrowA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#f5a623" opacity="0.6"/>
+            </marker>
+            <marker id="arrowB" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#4b9eff" opacity="0.6"/>
+            </marker>
+            <filter id="glow-g"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="glow-a"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+
+          <!-- Circular arrow path (clockwise) -->
+          <path d="M250,95 A165,165 0 0,1 395,178" stroke="#3dd68c" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowG)"/>
+          <path d="M395,178 A165,165 0 0,1 395,322" stroke="#f5a623" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowA)"/>
+          <path d="M395,322 A165,165 0 0,1 250,405" stroke="#4b9eff" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowB)"/>
+          <path d="M250,405 A165,165 0 0,1 105,322" stroke="#3dd68c" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowG)"/>
+          <path d="M105,322 A165,165 0 0,1 105,178" stroke="#f5a623" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowA)"/>
+          <path d="M105,178 A165,165 0 0,1 250,95" stroke="#4b9eff" stroke-width="1.5" fill="none" opacity="0.4" marker-end="url(#arrowB)"/>
+
+          <!-- Node 1 — top — More Sensors (green) -->
+          <rect x="178" y="52" width="144" height="58" rx="3" fill="#0d1420" stroke="#3dd68c" stroke-width="1.2"/>
+          <rect x="178" y="52" width="144" height="4" rx="2" fill="#3dd68c"/>
+          <text x="250" y="78" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#3dd68c" text-anchor="middle">More Sensors</text>
+          <text x="250" y="97" font-family="DM Mono, monospace" font-size="9" fill="#4d607e" text-anchor="middle">receipt posts recruit supply</text>
+
+          <!-- Node 2 — top right — Faster Dispatch (amber) -->
+          <rect x="370" y="148" width="118" height="58" rx="3" fill="#0d1420" stroke="#f5a623" stroke-width="1.2"/>
+          <rect x="370" y="148" width="118" height="4" rx="2" fill="#f5a623"/>
+          <text x="429" y="174" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#f5a623" text-anchor="middle">Faster</text>
+          <text x="429" y="190" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#f5a623" text-anchor="middle">Dispatch</text>
+          <text x="429" y="205" font-family="DM Mono, monospace" font-size="8.5" fill="#4d607e" text-anchor="middle">density ↓ latency</text>
+
+          <!-- Node 3 — bottom right — More Queries (blue) -->
+          <rect x="370" y="294" width="118" height="58" rx="3" fill="#0d1420" stroke="#4b9eff" stroke-width="1.2"/>
+          <rect x="370" y="294" width="118" height="4" rx="2" fill="#4b9eff"/>
+          <text x="429" y="320" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#4b9eff" text-anchor="middle">More</text>
+          <text x="429" y="336" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#4b9eff" text-anchor="middle">Queries</text>
+          <text x="429" y="350" font-family="DM Mono, monospace" font-size="8.5" fill="#4d607e" text-anchor="middle">speed drives adoption</text>
+
+          <!-- Node 4 — bottom — More Truth Atoms (green) -->
+          <rect x="170" y="390" width="160" height="58" rx="3" fill="#0d1420" stroke="#3dd68c" stroke-width="1.2"/>
+          <rect x="170" y="390" width="160" height="4" rx="2" fill="#3dd68c"/>
+          <text x="250" y="416" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#3dd68c" text-anchor="middle">More Truth Atoms</text>
+          <text x="250" y="435" font-family="DM Mono, monospace" font-size="9" fill="#4d607e" text-anchor="middle">DB compounds with use</text>
+
+          <!-- Node 5 — bottom left — Better Confidence (amber) -->
+          <rect x="12" y="294" width="118" height="58" rx="3" fill="#0d1420" stroke="#f5a623" stroke-width="1.2"/>
+          <rect x="12" y="294" width="118" height="4" rx="2" fill="#f5a623"/>
+          <text x="71" y="320" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#f5a623" text-anchor="middle">Better</text>
+          <text x="71" y="336" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#f5a623" text-anchor="middle">Confidence</text>
+          <text x="71" y="350" font-family="DM Mono, monospace" font-size="8.5" fill="#4d607e" text-anchor="middle">accuracy calibrates</text>
+
+          <!-- Node 6 — top left — Higher Value (blue) -->
+          <rect x="12" y="148" width="118" height="58" rx="3" fill="#0d1420" stroke="#4b9eff" stroke-width="1.2"/>
+          <rect x="12" y="148" width="118" height="4" rx="2" fill="#4b9eff"/>
+          <text x="71" y="174" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#4b9eff" text-anchor="middle">Higher</text>
+          <text x="71" y="190" font-family="DM Sans, sans-serif" font-size="13" font-weight="600" fill="#4b9eff" text-anchor="middle">Value</text>
+          <text x="71" y="205" font-family="DM Mono, monospace" font-size="8.5" fill="#4d607e" text-anchor="middle">moat deepens per query</text>
+
+          <!-- Center label -->
+          <circle cx="250" cy="250" r="52" fill="#080c14" stroke="#1e2d45" stroke-width="1"/>
+          <circle cx="250" cy="250" r="52" fill="none" stroke="#3dd68c" stroke-width="0.5" stroke-dasharray="4 6" opacity="0.3"/>
+          <text x="250" y="244" font-family="DM Mono, monospace" font-size="11" font-weight="500" fill="#f5a623" text-anchor="middle" letter-spacing="0.08em">PROXY</text>
+          <text x="250" y="260" font-family="DM Mono, monospace" font-size="9" fill="#4d607e" text-anchor="middle">FLYWHEEL</text>
+          <circle cx="250" cy="250" r="4" fill="#3dd68c" filter="url(#glow-g)"/>
+        </svg>
+      </div>
     </div>
   </section>
 
@@ -2384,6 +2458,155 @@
     </div>
   </section>
 
+  <!-- TEAM -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">The team</p>
+      <h2 class="section-title reveal">Built by an operator<br><em style="font-style:italic; color:var(--amber);">who lived the problem.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">Domain authority that cannot be manufactured. A build speed that signals urgency.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;" class="reveal">
+
+        <!-- Joshua -->
+        <div style="background:var(--bg2); border:1px solid var(--amber); border-radius:3px 0 0 3px; padding:40px 44px; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--amber);"></div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">Founder & Managing Partner — BUILD Capital Partners</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:26px; font-weight:400; color:#ffffff; margin-bottom:6px;">Joshua Tandy, J.D.</h3>
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-bottom:20px;">@jtandylaw</div>
+          <p style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:24px;">Federal court clerk, Judge David Sam, U.S. District Court, Utah. Goldman Sachs private wealth management. Co-founder PURE Healthcare — merged with AleraCare. Co-founder and Director, Memory Treatment Centers (CerebraLinked Platform for AD). Board Designee, Aura TopCo (PE-backed). Built AI-powered trading systems on Polymarket. Built Proxy because he watched the physical verification gap cost time, money, and patient outcomes in real workflows for years — across operating companies, portfolio investments, and his own AI-driven trading systems.</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--amber);">·</span> Federal Court Clerk — Judge David Sam, D. Utah
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--amber);">·</span> Goldman Sachs — Private Wealth Management
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--amber);">·</span> Co-founder, PURE Healthcare / AleraCare
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--amber);">·</span> Co-founder & Director, Memory Treatment Centers
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--amber);">·</span> Board, Aura TopCo (PE-backed) · Polymarket AI trading
+            </div>
+          </div>
+        </div>
+
+        <!-- Chase -->
+        <div style="background:var(--bg2); border:1px solid var(--green); border-left:none; border-radius:0 3px 3px 0; padding:40px 44px; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--green);"></div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px;">Lead Developer — AI Intern, BUILD Capital Partners (Jan 2026)</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:26px; font-weight:400; color:#ffffff; margin-bottom:6px;">Chase Dobson</h3>
+          <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; margin-bottom:20px;">30-day build plan completed in ~1 calendar week</div>
+          <p style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:24px;">Recently returned from a two-year mission in Panama — fluent Spanish and Dulegaya. Built the entire Proxy stack from scratch: backend API, PostGIS geo-matching engine, React Native sensor app, Socket.io real-time sync, Stripe Connect escrow and payments, confidence scoring engine, Truth Atom storage, and shadow query infrastructure. Completed the full 30-day build plan in under one calendar week.</p>
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--green);">·</span> Mission — Panama · Spanish & Dulegaya
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--green);">·</span> AI Intern, BUILD Capital Partners (Jan 2026)
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--green);">·</span> Full-stack: backend, mobile, web portal
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--green);">·</span> PostGIS dispatch · Stripe Connect · Truth Atoms
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">
+              <span style="color:var(--green);">·</span> Shadow queries · Confidence scoring · Provenance
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- API CTA BANNER -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="background: linear-gradient(135deg, #0d1420 0%, #111a2c 100%); border:1px solid var(--amber); border-radius:3px; padding:52px 64px; display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; position:relative; overflow:hidden;">
+        <div style="position:absolute; right:-80px; top:-80px; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 70%); pointer-events:none;"></div>
+        <div>
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px;">Private Beta · Now Open</p>
+          <h2 style="font-family:'Instrument Serif',serif; font-size:clamp(24px,3vw,38px); font-weight:400; color:#ffffff; line-height:1.15; margin-bottom:16px;">Every agent will eventually<br>need to <em style="font-style:italic; color:var(--amber);">query reality.</em></h2>
+          <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.65; max-width:520px;">We intend to be the layer they query. First 10 Agent Operator accounts get founding member status. SLC pilot is live. Santiago next.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px; flex-shrink:0;">
+          <a href="#waitlist" class="btn-primary" style="text-align:center; white-space:nowrap; padding:16px 36px; font-size:13px;">GET API ACCESS →</a>
+          <a href="#waitlist" onclick="activateSensorTab()" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); text-align:center; text-decoration:none; letter-spacing:0.04em; padding:8px 0;">Become a Sensor ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTORS -->
+  <section style="padding: 0 0 80px; background-color: #080c14;" id="investors">
+    <div class="container">
+      <div class="reveal" style="background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); border:1px solid var(--border); border-radius:3px; overflow:hidden; position:relative;">
+
+        <!-- Amber glow -->
+        <div style="position:absolute; right:-60px; top:-60px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(245,166,35,0.06) 0%, transparent 70%); pointer-events:none;"></div>
+
+        <!-- Header -->
+        <div style="padding:48px 56px 40px; border-bottom:1px solid var(--border);">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:48px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:280px;">
+              <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px;">For Investors &amp; Strategic Partners</p>
+              <h2 style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3vw,38px); font-weight:400; color:#ffffff; line-height:1.15; margin-bottom:16px;">The full thesis.<br><em style="font-style:italic; color:var(--amber);">Everything you need to evaluate Proxy.</em></h2>
+              <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.7; max-width:520px;">The pitch deck covers the problem, the solution, the moat, the agent economics, the flywheel, the competitive landscape, risks and mitigations, market size, and the team. 24 slides including two appendixes — Strategic Connections and Build Roadmap.</p>
+            </div>
+
+            <!-- Download CTA -->
+            <div style="display:flex; flex-direction:column; gap:12px; flex-shrink:0; align-items:center; justify-content:center; padding:8px 0;">
+              <a href="/proxy-deck-v9.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:12px; font-weight:500; color:var(--bg); background:var(--amber); border:none; padding:14px 28px; border-radius:3px; cursor:pointer; letter-spacing:0.04em; text-decoration:none; white-space:nowrap; transition:all 0.2s;" onmouseover="this.style.background='#ffc96b'; this.style.transform='translateY(-1px)'" onmouseout="this.style.background='var(--amber)'; this.style.transform='translateY(0)'">
+                ↓ DOWNLOAD DECK (v8)
+              </a>
+              <a href="mailto:joshua@useproxy.io" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s;" onmouseover="this.style.color='var(--amber)'" onmouseout="this.style.color='var(--text3)'">
+                or reach out → joshua@useproxy.io
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- What's inside -->
+        <div style="padding:32px 56px 40px;">
+          <p style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:20px;">What's in the deck</p>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px;">
+
+            <div style="background:var(--bg); border:1px solid var(--border); border-radius:3px 0 0 3px; padding:18px 20px;">
+              <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Thesis</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Problem · Inevitability argument · Independent validation · Solution · One real query</div>
+            </div>
+
+            <div style="background:var(--bg); border:1px solid var(--border); border-left:none; padding:18px 20px;">
+              <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--green); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Moat</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Ground Truth Database · Truth Decay · Confidence vectors · Shadow queries · Flywheel</div>
+            </div>
+
+            <div style="background:var(--bg); border:1px solid var(--border); border-left:none; padding:18px 20px;">
+              <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Economics</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Agent economics · ROI math · Pricing · Business model · Market size · Why we win</div>
+            </div>
+
+            <div style="background:var(--bg); border:1px solid var(--border); border-left:none; border-radius:0 3px 3px 0; padding:18px 20px;">
+              <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Appendixes</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Competitive landscape · Risks &amp; mitigations · Strategic connections · Build roadmap</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div style="padding:14px 56px; background:var(--bg3); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.04em;">24 slides · v9 · March 2026 · Confidential</p>
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.04em;">Not raising. Connecting. <a href="mailto:joshua@useproxy.io" style="color:var(--amber); text-decoration:none;">joshua@useproxy.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- WAITLIST -->
   <section class="waitlist" id="waitlist">
     <div class="container">
@@ -2432,7 +2655,11 @@
     <div class="container">
       <div class="footer-inner">
         <span class="footer-logo">PROXY · useproxy.io</span>
-        <span class="footer-raas">Reality as a Service<span>™</span></span>
+        <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap; justify-content:center;">
+          <a href="/proxy-deck-v9.pdf" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s;" onmouseover="this.style.color='var(--amber)'" onmouseout="this.style.color='var(--text3)'">↓ Download Pitch Deck (v8)</a>
+          <a href="https://x.com/jtandylaw" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); text-decoration:none; letter-spacing:0.04em; transition:color 0.2s;" onmouseover="this.style.color='var(--amber)'" onmouseout="this.style.color='var(--text3)'">@jtandylaw on X</a>
+          <span class="footer-raas">Reality as a Service<span>™</span></span>
+        </div>
       </div>
     </div>
   </footer>
