@@ -1059,13 +1059,10 @@
       .why-now-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding: 36px 28px !important; }
       .receipt-row { grid-template-columns: 1fr !important; }
       .receipt-stats { flex-direction: row !important; justify-content: space-between; }
+      .agent-econ-grid { grid-template-columns: 1fr !important; }
+      .flywheel-grid { grid-template-columns: 1fr !important; }
     }
   </style>
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body style="background-color: #080c14; color: #e8edf5;">
 
@@ -1116,13 +1113,13 @@
         The <em>physical-world</em><br>data layer for AI agents
       </h1>
       <p class="hero-sub">
-        Query reality. Get structured, verifiable truth from the real world — confidence-scored, provenance-tracked, and returned as decision-grade data your agents can act on.
+        AI can't access the real world. Proxy sends humans to verify it and returns structured truth.
       </p>
       <p class="hero-plain reveal" style="font-size:16px; font-weight:400; color:var(--text2); max-width:520px; line-height:1.65; margin-bottom:8px; margin-top:-24px; opacity:0; animation: fade-up 0.7s ease forwards 0.35s;">
-        We dispatch vetted human sensors to capture structured, provenance-backed physical truth for AI agents — in minutes.
+        Confidence-scored, provenance-backed, and returned as decision-grade data — in minutes. Every query stores Truth Atoms permanently. The database compounds with every observation.
       </p>
       <p class="hero-plain reveal" style="font-size:14px; font-weight:300; color:var(--text3); max-width:520px; line-height:1.65; margin-bottom:20px; opacity:0; animation: fade-up 0.7s ease forwards 0.38s;">
-        When an agent needs to know something about the physical world, Proxy sends a verified human to check and returns the answer as structured data.
+        An agent that needs to verify something in the physical world has one call to make.
       </p>
       <p class="hero-status reveal" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.06em; margin-bottom:28px; opacity:0; animation: fade-up 0.7s ease forwards 0.38s;">
         <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--green); margin-right:8px; vertical-align:middle; box-shadow: 0 0 6px var(--green);"></span>
@@ -1494,20 +1491,144 @@
     </div>
   </section>
 
+  <!-- COMPETITIVE LANDSCAPE -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">Competitive landscape</p>
+      <h2 class="section-title reveal">They are task platforms.<br><em style="font-style:italic; color:var(--amber);">Proxy is data infrastructure.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">The question is not "why not DoorDash + Claude?" — it's why no one else stores the structured, confidence-scored, provenance-hashed output permanently. That database is Proxy's CUDA.</p>
+      <div class="reveal" style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; font-family:'DM Mono',monospace; font-size:12px;">
+          <!-- Header -->
+          <tr style="background:var(--bg3);">
+            <td style="padding:12px 20px; border:1px solid var(--border2); color:var(--text3); font-size:9px; letter-spacing:0.08em; text-transform:uppercase; width:22%;">Feature</td>
+            <td style="padding:12px 16px; border:1px solid var(--amber); color:var(--amber); font-size:11px; font-weight:600; text-align:center; width:13%;">Proxy</td>
+            <td style="padding:12px 16px; border:1px solid var(--border2); color:var(--text3); font-size:9px; text-align:center; width:14%;">RentAHuman</td>
+            <td style="padding:12px 16px; border:1px solid var(--border2); color:var(--text3); font-size:9px; text-align:center; width:15%;">DoorDash Tasks</td>
+            <td style="padding:12px 16px; border:1px solid var(--border2); color:var(--text3); font-size:9px; text-align:center; width:16%;">MTurk / TaskRabbit</td>
+            <td style="padding:12px 16px; border:1px solid var(--border2); color:var(--text3); font-size:9px; text-align:center; width:16%;">IoT / Cameras</td>
+          </tr>
+          <!-- Rows -->
+          <tr style="background:var(--bg2);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Structured JSON output</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--amber); font-size:10px;">⚠️ fixed schema</td>
+          </tr>
+          <tr style="background:var(--bg3);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Confidence scoring</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+          </tr>
+          <tr style="background:var(--bg2);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Cryptographic provenance</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+          </tr>
+          <tr style="background:var(--bg3);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Truth Decay model</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+          </tr>
+          <tr style="background:var(--bg2);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Agent-native API / MCP</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+          </tr>
+          <tr style="background:var(--bg3);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px;">Compounding data moat</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:16px;">❌</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--amber); font-size:10px;">⚠️ siloed data</td>
+          </tr>
+          <tr style="background:var(--bg2); border-bottom:1px solid var(--border);">
+            <td style="padding:12px 20px; border:1px solid var(--border); color:var(--text2); font-size:12px; border-radius:0 0 0 3px;">Instant global deployment</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--amber); font-size:10px;">⚠️ limited</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--green); font-size:16px;">✅</td>
+            <td style="padding:12px 16px; border:1px solid var(--border); text-align:center; color:var(--red); font-size:10px; border-radius:0 0 3px 0;">❌ capex required</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
   <!-- WHY NOW -->
   <section style="padding: 0 0 80px; background-color: #080c14;">
     <div class="container">
+      <!-- Three voices validation -->
+      <p class="section-label reveal" style="margin-bottom:16px;">Independent validation</p>
+      <h2 class="section-title reveal" style="margin-bottom:8px;">Three voices.<br><em style="font-style:italic; color:var(--green);">Same conclusion.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:36px;" class="reveal">Karpathy, Jensen Huang, and Sam Ragsdale all named the same gap — independently, in the same week. That's not a trend. That's a category forming.</p>
+      <div style="display:flex; flex-direction:column; gap:2px; margin-bottom:80px;" class="reveal">
+        <!-- Karpathy -->
+        <div style="background:var(--bg2); border:1px solid var(--amber); border-radius:3px 3px 0 0; padding:24px 32px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;">
+          <div>
+            <p style="font-family:'Instrument Serif',serif; font-size:16px; font-style:italic; color:var(--text2); line-height:1.65; margin-bottom:12px;">"I'm surprised we don't have information markets where taking a photo from somewhere costs $10. Agents trying to resolve real-world positions need that."</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-family:'DM Mono',monospace; font-size:11px; font-weight:600; color:var(--amber);">Andrej Karpathy</span>
+              <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">No Priors Podcast · March 2026</span>
+              <a href="https://youtu.be/kwSVtQ7dziU?si=ZwZpAEup-lx_P1SB" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:10px; color:var(--amber); text-decoration:none;">↗ Watch</a>
+            </div>
+          </div>
+          <div style="font-size:28px; opacity:0.4;">"</div>
+        </div>
+        <!-- Jensen -->
+        <div style="background:var(--bg2); border:1px solid var(--green); border-top:none; padding:24px 32px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;">
+          <div>
+            <p style="font-family:'Instrument Serif',serif; font-size:16px; font-style:italic; color:var(--text2); line-height:1.65; margin-bottom:12px;">"Agentic scaling — the fourth scaling law — depends on agents accessing ground truth to perform research. Physical ground truth is the missing layer."</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-family:'DM Mono',monospace; font-size:11px; font-weight:600; color:var(--green);">Jensen Huang · NVIDIA CEO</span>
+              <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">GTC 2026 · Lex Fridman Interview</span>
+            </div>
+          </div>
+          <div style="font-size:28px; opacity:0.4; color:var(--green);">"</div>
+        </div>
+        <!-- Ragsdale -->
+        <div style="background:var(--bg2); border:1px solid var(--blue); border-top:none; border-radius:0 0 3px 3px; padding:24px 32px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;">
+          <div>
+            <p style="font-family:'Instrument Serif',serif; font-size:16px; font-style:italic; color:var(--text2); line-height:1.65; margin-bottom:12px;">"Payment is solved. Discovery is being solved. Physical verification — did it ship, is it on the shelf, was the condition as claimed — that layer doesn't exist yet."</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span style="font-family:'DM Mono',monospace; font-size:11px; font-weight:600; color:var(--blue);">Sam Ragsdale</span>
+              <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">Open Agentic Commerce · 406K Views</span>
+            </div>
+          </div>
+          <div style="font-size:28px; opacity:0.4; color:var(--blue);">"</div>
+        </div>
+        <!-- Bottom bar -->
+        <div style="background:var(--bg3); border:1px solid var(--border); border-top:none; padding:14px 32px;">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.04em; text-align:center;">Three independent conversations. Same conclusion. The category is forming now.</p>
+        </div>
+      </div>
+
+      <!-- Why Now card -->
       <div class="reveal" style="background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%); border:1px solid var(--border); border-radius:3px; padding: 56px 64px; position:relative; overflow:hidden;">
         <div style="position:absolute; top:-60px; right:-60px; width:240px; height:240px; border-radius:50%; background: radial-gradient(circle, rgba(61,214,140,0.06) 0%, transparent 70%); pointer-events:none;"></div>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:64px; align-items:center;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:64px; align-items:center;" class="why-now-grid">
           <div>
             <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:20px;">Why now</p>
             <h2 class="section-title" style="margin-bottom:20px;">The gap just became<br><em style="font-style:italic; color:var(--green);">impossible to ignore.</em></h2>
             <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:16px;">AI agents can now reason, plan, and execute with extraordinary precision. They can write code, negotiate contracts, analyze markets, and route complex decisions — entirely autonomously.</p>
             <p style="font-size:15px; font-weight:300; color:var(--text2); line-height:1.7; margin-bottom:16px;">But every agentic workflow eventually hits the same wall. The moment an agent needs to verify something in the physical world — a drug in stock, a price on a shelf, a condition at a site — every existing tool fails.</p>
             <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px; margin-top:24px;">Physical intelligence</p>
-            <p style="font-size:15px; font-weight:400; color:var(--text2); line-height:1.7; margin-bottom:12px;">As agents get smarter, the demand for physical intelligence — verified, structured truth from the real world — becomes the binding constraint. Every other layer of the agent stack is solved. This one isn't.</p>
-            <p style="font-size:15px; font-style:italic; color:var(--text3); line-height:1.7;">Andrej Karpathy named this gap unprompted on the No Priors podcast: "I'm surprised we don't have information markets where taking a photo from somewhere costs $10. Agents trying to resolve real-world positions need that." <a href="https://youtu.be/kwSVtQ7dziU?si=ZwZpAEup-lx_P1SB" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-decoration:none; letter-spacing:0.04em; font-style:normal; white-space:nowrap;">↗ Watch on YouTube</a></p>
+            <p style="font-size:15px; font-weight:400; color:var(--text2); line-height:1.7;">As agents get smarter, the demand for physical intelligence becomes the binding constraint. Every other layer of the agent stack is solved. This one isn't.</p>
           </div>
           <div style="display:flex; flex-direction:column; gap:16px;">
             <div style="display:flex; gap:16px; align-items:flex-start; background:var(--bg); border:1px solid var(--border); border-radius:3px; padding:20px 24px;">
@@ -1615,7 +1736,7 @@
               No existing platform required. Apply independently to join the Salt Lake City sensor network. You'll be verified, onboarded via the Proxy app, and dispatched to physical verification queries in your area.
             </div>
             <a href="#waitlist" class="btn-sensor" onclick="activateSensorTab()">Reserve your sensor spot</a>
-            <p class="sensor-note">Pilot is not yet open. Reserve your spot — we'll reach out when SLC network launches.</p>
+            <p class="sensor-note">SLC pilot is live. 4 sensors earning now. Reserve your spot for the next available market.</p>
           </div>
           <div class="sensor-path">
             <div class="path-tag gig">Path 2 — Existing Gig Workers</div>
@@ -1627,7 +1748,7 @@
               Proxy operates as a fully independent app. Your existing gig accounts are unaffected.
             </div>
             <a href="#waitlist" class="btn-sensor" onclick="activateSensorTab()">Reserve your sensor spot</a>
-            <p class="sensor-note">Pilot is not yet open. Reserve your spot — we'll reach out when SLC network launches.</p>
+            <p class="sensor-note">SLC pilot is live. 4 sensors earning now. Reserve your spot for the next available market.</p>
           </div>
         </div>
       </div>
@@ -1664,13 +1785,79 @@
     </div>
   </section>
 
+  <!-- ACTUAL OUTPUT PLACEHOLDER -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">Actual output</p>
+      <h2 class="section-title reveal">The loop is closing.<br><em style="font-style:italic; color:var(--green);">Real receipts are days away.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">This section will show the actual sensor photo, JSON payload, and routing decision from a live Proxy query — timestamped, geotagged, and provenance-hashed. Not a mockup. The real loop.</p>
+
+      <div class="reveal" style="background:var(--bg2); border:1px solid var(--border); border-radius:3px; overflow:hidden;">
+        <!-- Top bar -->
+        <div style="padding:16px 32px; background:var(--bg3); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber); animation: pulse 2s infinite;"></span>
+            <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.06em;">PENDING · pharmacy_inventory_v1 · Salt Lake City, UT</span>
+          </div>
+          <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.04em;">First verified output posting to @jtandylaw on X</span>
+        </div>
+
+        <!-- Placeholder content -->
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;">
+
+          <!-- Photo proof slot -->
+          <div style="padding:40px 32px; border-right:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:240px;">
+            <div style="width:72px; height:72px; border-radius:3px; border:1px dashed var(--border2); display:flex; align-items:center; justify-content:center; margin-bottom:16px; background:var(--bg3);">
+              <span style="font-size:28px; opacity:0.4;">📷</span>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; text-align:center; margin-bottom:6px; text-transform:uppercase;">Geotagged Photo Proof</div>
+            <div style="font-size:12px; font-weight:300; color:var(--text3); text-align:center; line-height:1.55;">Sensor photo with timestamp and GPS coordinates — coming from the SLC pilot run</div>
+          </div>
+
+          <!-- JSON output slot -->
+          <div style="padding:40px 32px; border-right:1px solid var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="width:100%; background:#060a10; border:1px dashed var(--border2); border-radius:3px; padding:20px; font-family:'DM Mono',monospace; font-size:11px; line-height:1.9; opacity:0.5;">
+              <div style="color:var(--text3);">{</div>
+              <div style="padding-left:16px; color:var(--text3);">"in_stock": <span style="color:var(--green);">—</span>,</div>
+              <div style="padding-left:16px; color:var(--text3);">"confidence": <span style="color:var(--amber);">—</span>,</div>
+              <div style="padding-left:16px; color:var(--text3);">"pharmacy": <span style="color:var(--text3);">"—"</span>,</div>
+              <div style="padding-left:16px; color:var(--text3);">"resolved_in_min": <span style="color:var(--blue);">—</span>,</div>
+              <div style="padding-left:16px; color:var(--text3);">"provenance_hash": <span style="color:var(--text3);">"—"</span></div>
+              <div style="color:var(--text3);">}</div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; text-align:center; margin-top:12px; text-transform:uppercase;">Live JSON Payload</div>
+          </div>
+
+          <!-- Human summary + routing slot -->
+          <div style="padding:40px 32px; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="width:100%; background:#060a10; border:1px dashed var(--border2); border-radius:3px; padding:16px 20px; margin-bottom:16px; opacity:0.5;">
+              <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); line-height:1.7;">✅ [Drug] in stock at [Pharmacy].<br>Verified [X] min ago.<br>Confidence [score]. Safe to route.</div>
+            </div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.06em; text-align:center; text-transform:uppercase;">Human Summary + Routing Decision</div>
+          </div>
+
+        </div>
+
+        <!-- Bottom CTA bar -->
+        <div style="padding:18px 32px; background:var(--bg3); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text2); letter-spacing:0.04em;">
+            Real sensor photo · real JSON · real timestamp · real routing decision. Days away.
+          </p>
+          <a href="https://x.com/jtandylaw" target="_blank" rel="noopener noreferrer" style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); text-decoration:none; letter-spacing:0.04em; white-space:nowrap;">
+            Follow @jtandylaw on X for the first receipt ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- RECENT QUERIES / RECEIPTS -->
   <section style="padding: 0 0 80px; background-color: #080c14;">
     <div class="container">
       <div style="margin-bottom:40px; reveal">
         <p class="section-label reveal">Recent queries</p>
         <h2 class="section-title reveal">The loop is running.<br>These are the receipts.</h2>
-        <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-top:12px;" class="reveal">Every completed query is a proof point. Every receipt is evidence the loop works.</p>
+        <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-top:12px;" class="reveal">Every completed query is a proof point. Every receipt stores Truth Atoms permanently. The database compounds with every observation.</p>
       </div>
       <div style="display:flex; flex-direction:column; gap:2px;" class="reveal">
 
@@ -1815,6 +2002,94 @@
     </div>
   </section>
 
+  <!-- RISKS DESIGNED OUT -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">Risks &amp; mitigations</p>
+      <h2 class="section-title reveal">Every risk is architectural,<br><em style="font-style:italic; color:var(--amber);">not operational.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">Every failure mode has a corresponding architectural solution. Risk is not ignored — it is designed around.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;" class="reveal">
+
+        <!-- Data Quality -->
+        <div style="background:var(--bg2); border:1px solid rgba(255,107,107,0.3); border-radius:3px 0 0 0; padding:32px 36px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--red); border:1px solid rgba(255,107,107,0.3); padding:3px 8px; border-radius:2px; background:rgba(255,107,107,0.07); letter-spacing:0.06em;">DATA QUALITY</span>
+            <span style="font-size:13px; font-weight:600; color:#ffffff;">Wrong data leads to bad decisions</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="padding-left:12px; border-left:2px solid rgba(255,107,107,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--amber); margin-bottom:3px;">Shadow Queries</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">5% of dispatches are known-answer tests. Sensors never know which. Uncertainty is the deterrent.</div>
+            </div>
+            <div style="padding-left:12px; border-left:2px solid rgba(255,107,107,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--amber); margin-bottom:3px;">Accuracy Vectors</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Per-sensor, per-query-type scores update after every outcome. Bad sensors filtered automatically.</div>
+            </div>
+            <div style="padding-left:12px; border-left:2px solid rgba(255,107,107,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--amber); margin-bottom:3px;">AI Photo Check + Confidence Scoring</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Claude reviews every submission. Results carry scored probability — 0.91, not just "verified". Low confidence triggers re-query.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liability -->
+        <div style="background:var(--bg2); border:1px solid rgba(245,166,35,0.3); border-left:none; border-radius:0 3px 0 0; padding:32px 36px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--amber); border:1px solid rgba(245,166,35,0.3); padding:3px 8px; border-radius:2px; background:rgba(245,166,35,0.07); letter-spacing:0.06em;">LIABILITY</span>
+            <span style="font-size:13px; font-weight:600; color:#ffffff;">Wrong output causes measurable harm</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="padding-left:12px; border-left:2px solid rgba(245,166,35,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--amber); margin-bottom:3px;">Observational Data Only</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Workers collect publicly observable retail facts. Joshua Tandy, J.D. has confirmed this framework does not constitute HIPAA-regulated activity.</div>
+            </div>
+            <div style="padding-left:12px; border-left:2px solid rgba(245,166,35,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--amber); margin-bottom:3px;">Cryptographic Provenance</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">SHA-256 hashed chain of custody on every query. What was observed, when, by whom — immutable record shifts liability appropriately.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supply Quality -->
+        <div style="background:var(--bg3); border:1px solid rgba(75,158,255,0.3); border-top:none; border-radius:0 0 0 3px; padding:32px 36px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--blue); border:1px solid rgba(75,158,255,0.3); padding:3px 8px; border-radius:2px; background:rgba(75,158,255,0.07); letter-spacing:0.06em;">SUPPLY QUALITY</span>
+            <span style="font-size:13px; font-weight:600; color:#ffffff;">Reliability degrades as network grows</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="padding-left:12px; border-left:2px solid rgba(75,158,255,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--blue); margin-bottom:3px;">Tiered Access</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">High-accuracy sensors get priority dispatch and better pay. The system self-selects for quality at scale.</div>
+            </div>
+            <div style="padding-left:12px; border-left:2px solid rgba(75,158,255,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--blue); margin-bottom:3px;">GPS Anti-Spoofing + Worker Isolation</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Velocity detection catches location fraud. Sensors never know which queries are shadow tests — gaming the system is structurally irrational.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regulatory -->
+        <div style="background:var(--bg3); border:1px solid rgba(61,214,140,0.3); border-top:none; border-left:none; border-radius:0 0 3px 0; padding:32px 36px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+            <span style="font-family:'DM Mono',monospace; font-size:9px; color:var(--green); border:1px solid rgba(61,214,140,0.3); padding:3px 8px; border-radius:2px; background:rgba(61,214,140,0.07); letter-spacing:0.06em;">REGULATORY</span>
+            <span style="font-size:13px; font-weight:600; color:#ffffff;">Worker classification or privacy challenges</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="padding-left:12px; border-left:2px solid rgba(61,214,140,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:3px;">Independent Contractor Model</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Sensors are independent contractors completing discrete observation tasks — same structure as gig platforms operating at global scale.</div>
+            </div>
+            <div style="padding-left:12px; border-left:2px solid rgba(61,214,140,0.3);">
+              <div style="font-size:12px; font-weight:600; color:var(--green); margin-bottom:3px;">Entity Separation + Platform ToS</div>
+              <div style="font-size:12px; font-weight:300; color:var(--text2); line-height:1.55;">Proxy operates as a legally distinct entity. Standard SaaS ToS covering worker data, query outputs, and data retention — drafted before first real query dispatched.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section style="padding: 0 0 80px; background-color: #080c14;">
     <div class="container">
@@ -1853,12 +2128,12 @@
             <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">Any physical-world observation that requires a human to be present at a specific location at a known time. Current and planned query types span healthcare (drug availability, formulary checks, infusion center capacity, storage conditions), information markets (construction milestones, product launch confirmation, event attendance), retail (shelf inventory, pricing, promotional compliance), compliance and audit (site readiness, physical controls, chain of custody), real estate and infrastructure (construction progress, occupancy, asset condition), and logistics (delivery confirmation with visual proof, cold chain verification). The common thread: no database, API, or model can substitute for a verified human physically present at a location with provenance. That's the gap Proxy closes.</div>
           </div>
 
-        </div>
-      </div>
-    </div>
-  </section>
+          <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-radius:0 0 3px 3px; padding:28px 32px;">
+            <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:#ffffff; margin-bottom:10px;">Won't robots and cameras eventually replace this?</div>
+            <div style="font-size:14px; font-weight:300; color:#8a9bb8; line-height:1.65;">No — and the reason is structural, not temporary. A camera network or robot fleet requires capital, installation time, permitting, maintenance, and geographic pre-commitment. Proxy sensors are people who already live in every city on earth. Geographic coverage is instantaneous. A robot cannot be dispatched to Salt Lake City tomorrow. A Proxy sensor can be dispatched in 60 seconds. Beyond deployment speed, physical verification often requires judgment — a label that's partially obscured, a situation that requires asking a staff member, an edge case no sensor was pre-configured to handle. And crucially: the data moat is sensor-agnostic. Even if IoT density increases, the Ground Truth Database compounds. The moat is the data, not the human specifically.</div>
+          </div>
 
-  <!-- BUILT FOR -->
+        </div>
   <section style="padding: 0 0 80px; background-color: #080c14;">
     <div class="container">
       <div class="reveal" style="text-align:center;">
@@ -1872,6 +2147,236 @@
           <div style="font-family:'DM Mono',monospace; font-size:12px; color:#8a9bb8; border:1px solid #1e2d45; padding:10px 20px; border-radius:3px; background:#0d1420; letter-spacing:0.06em;">Webhooks</div>
           <div style="font-family:'DM Mono',monospace; font-size:12px; color:#f5a623; border:1px solid rgba(245,166,35,0.3); padding:10px 20px; border-radius:3px; background:rgba(245,166,35,0.07); letter-spacing:0.06em;">Polymarket</div>
           <div style="font-family:'DM Mono',monospace; font-size:12px; color:#f5a623; border:1px solid rgba(245,166,35,0.3); padding:10px 20px; border-radius:3px; background:rgba(245,166,35,0.07); letter-spacing:0.06em;">Kalshi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENT ECONOMICS -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="background: var(--bg2); border:1px solid var(--border); border-radius:3px; overflow:hidden;">
+        <!-- Header -->
+        <div style="padding:48px 56px 36px; border-bottom:1px solid var(--border);">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px;">Agent Economics</p>
+          <h2 style="font-family:'Instrument Serif',serif; font-size:clamp(26px,3vw,38px); font-weight:400; color:#ffffff; line-height:1.15; letter-spacing:-0.01em; margin-bottom:16px;">Agents hold budgets.<br><em style="font-style:italic; color:var(--amber);">They optimize for certainty.</em></h2>
+          <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:640px; line-height:1.7;">Autonomous agents are being given budgets and the authority to spend them. An agent optimizing for correct outcomes will always choose to verify over guess — because the cost of a wrong decision exceeds the cost of verification by orders of magnitude. Proxy becomes a default spend primitive in every agentic stack.</p>
+        </div>
+        <!-- Three pillars -->
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0;">
+          <div style="padding:32px 36px; border-right:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--blue); margin-bottom:8px;">x402 + mpp</div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:16px;">PAYMENT LAYER SOLVED</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.65;">Coinbase's x402 and Stripe's mpp give agents permissionless spending. The infrastructure for agents buying services exists now. Proxy is the physical verification service they will buy.</div>
+          </div>
+          <div style="padding:32px 36px; border-right:1px solid var(--border);">
+            <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--green); margin-bottom:8px;">$0.00</div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:16px;">HUMAN INTERVENTION REQUIRED</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.65;">An agent can discover the Proxy API, post a query, set the price, hold escrow, receive results, and submit outcome feedback — with zero human in the loop. Every step is autonomous by design.</div>
+          </div>
+          <div style="padding:32px 36px;">
+            <div style="font-family:'DM Mono',monospace; font-size:22px; font-weight:500; color:var(--amber); margin-bottom:8px;">↑ EV</div>
+            <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:16px;">EXPECTED VALUE OF VERIFICATION</div>
+            <div style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.65;">When the cost of wrong data is quantifiable — a $10K position, a $200K regulatory finding — and the verification cost is $40–120, the math is never ambiguous. Proxy becomes the rational default.</div>
+          </div>
+        </div>
+        <!-- Bottom bar -->
+        <div style="padding:18px 56px; background:var(--bg3); border-top:1px solid var(--border);">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.04em; text-align:center;">Proxy is not a tool agents might use. It is a line item agents cannot rationally avoid.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLYWHEEL -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">The flywheel</p>
+      <h2 class="section-title reveal">Every city gets better<br><em style="font-style:italic; color:var(--green);">as density compounds.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:48px;" class="reveal">Proxy is not just a data moat. It is a self-reinforcing system. Each new sensor, query, and Truth Atom makes the entire network faster, cheaper, and more accurate.</p>
+
+      <!-- Flywheel loop -->
+      <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:2px;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:3px 0 0 0; padding:28px 32px; position:relative;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">01</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--green); margin-bottom:8px;">More Sensors</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">Receipt posts showing $40 earned in 18 minutes recruit the exact workers who want to earn between DoorDash runs. Supply grows without paid acquisition.</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-left:none; padding:28px 32px;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">02</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--amber); margin-bottom:8px;">Faster Dispatch</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">Sensor density reduces average dispatch time. 4 sensors: 18 min avg. 25 sensors: full city coverage. 50+ sensors: sub-5 min SLA. Speed drives adoption.</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-left:none; border-radius:0 3px 0 0; padding:28px 32px;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">03</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--blue); margin-bottom:8px;">More Queries</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">Faster resolution at lower cost attracts more Agent Operators and developers. Query volume grows. Each query generates revenue and data simultaneously.</div>
+        </div>
+      </div>
+      <div class="reveal" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px;">
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-radius:0 0 0 3px; padding:28px 32px;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">06</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--green); margin-bottom:8px;">Higher Value Per Query</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">More accurate results justify higher prices and enterprise contracts. The moat deepens. A competitor who starts today doesn't just lack the technology — they lack the data.</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-left:none; padding:28px 32px;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">05</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--amber); margin-bottom:8px;">Better Confidence Scores</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">Sensor accuracy vectors calibrate with every resolved query. Shadow queries continuously test the network. Confidence scoring becomes more precise with scale.</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-left:none; border-radius:0 0 3px 0; padding:28px 32px;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; margin-bottom:10px;">04</div>
+          <div style="font-family:'DM Sans',sans-serif; font-size:15px; font-weight:600; color:var(--blue); margin-bottom:8px;">More Truth Atoms</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.6;">Every resolved query stores typed, decaying, provenance-hashed Truth Atoms permanently. The Ground Truth Database compounds. Historical accuracy data improves every future query.</div>
+        </div>
+      </div>
+
+      <!-- Flywheel footer -->
+      <div class="reveal" style="margin-top:2px; background:var(--bg3); border:1px solid var(--border); border-radius:0 0 3px 3px; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span style="width:6px; height:6px; border-radius:50%; background:var(--green); display:inline-block; box-shadow:0 0 6px var(--green);"></span>
+          <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--green); letter-spacing:0.06em;">Flywheel running in SLC today</span>
+        </div>
+        <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); letter-spacing:0.04em;">Every query tightens the loop. The same pattern Jensen built with CUDA — the install base defines the architecture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI TABLE -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <p class="section-label reveal">The roi argument</p>
+      <h2 class="section-title reveal">The cost of NOT verifying<br><em style="font-style:italic; color:var(--amber);">always exceeds the cost of verifying.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">Agents optimize for certainty. When the cost of wrong data is quantifiable, Proxy becomes the obvious spend.</p>
+      <div style="display:flex; flex-direction:column; gap:2px;" class="reveal">
+        <!-- Header -->
+        <div style="background:var(--bg3); border:1px solid var(--border2); padding:12px 24px; display:grid; grid-template-columns:1.4fr 2fr 1.4fr 1fr; gap:16px; border-radius:3px 3px 0 0;">
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.08em; text-transform:uppercase;">Vertical</div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--red); letter-spacing:0.08em; text-transform:uppercase;">Without Proxy</div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--green); letter-spacing:0.08em; text-transform:uppercase;">With Proxy</div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; text-align:right;">Outcome</div>
+        </div>
+        <!-- Row 1 -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; padding:20px 24px; display:grid; grid-template-columns:1.4fr 2fr 1.4fr 1fr; gap:16px; align-items:center;">
+          <div style="font-size:13px; font-weight:600; color:var(--blue);">Information Market</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.5;">$10,000 position resolved incorrectly = $10,000 loss, timestamp-stamped</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:var(--text2);">$40–120 verification query</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; font-weight:600; color:var(--amber); text-align:right;">99%+ cost avoidance</div>
+        </div>
+        <!-- Row 2 -->
+        <div style="background:var(--bg3); border:1px solid var(--border); border-top:none; padding:20px 24px; display:grid; grid-template-columns:1.4fr 2fr 1.4fr 1fr; gap:16px; align-items:center;">
+          <div style="font-size:13px; font-weight:600; color:var(--amber);">Compliance & Audit</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.5;">Regulatory finding from unverified site = $50K–$200K remediation + reputational cost</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:var(--text2);">$60–200 per site verification</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; font-weight:600; color:var(--amber); text-align:right;">99%+ cost avoidance</div>
+        </div>
+        <!-- Row 3 -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-radius:0 0 3px 3px; padding:20px 24px; display:grid; grid-template-columns:1.4fr 2fr 1.4fr 1fr; gap:16px; align-items:center;">
+          <div style="font-size:13px; font-weight:600; color:var(--green);">Retail & Brand</div>
+          <div style="font-size:13px; font-weight:300; color:var(--text2); line-height:1.5;">Undetected promo non-compliance across 500 stores = $2M–$5M lost promotional ROI per campaign</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; color:var(--text2);">$15–40 per store verification</div>
+          <div style="font-family:'DM Mono',monospace; font-size:12px; font-weight:600; color:var(--amber); text-align:right;">500x–1000x ROI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section style="padding: 0 0 80px; background-color: #080c14;" id="pricing">
+    <div class="container">
+      <p class="section-label reveal">Pricing</p>
+      <h2 class="section-title reveal">Infrastructure pricing.<br><em style="font-style:italic; color:var(--amber);">Every layer compounds.</em></h2>
+      <p style="font-size:15px; font-weight:300; color:var(--text2); max-width:480px; line-height:1.65; margin-bottom:40px;" class="reveal">Agents set the price at query submission. Higher price = faster dispatch priority. The platform take is 15% on per-query pricing.</p>
+      <div style="display:flex; flex-direction:column; gap:2px;" class="reveal">
+        <!-- Pricing rows -->
+        <div style="background:var(--bg2); border:1px solid var(--border); border-radius:3px 3px 0 0; padding:20px 32px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:4px;">Standard Query</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2);">Any physical-world observation. Agent sets price at submission.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--amber); white-space:nowrap;">$15–40 / query</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); white-space:nowrap;">15% platform take</div>
+        </div>
+        <div style="background:var(--bg3); border:1px solid var(--border); border-top:none; padding:20px 32px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:4px;">Information Market Verification</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2);">Milestone confirmation, product launch, event attendance, position resolution.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--blue); white-space:nowrap;">$40–120 / query</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); white-space:nowrap;">15% platform take</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; padding:20px 32px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:4px;">Reality Monitor Subscription</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2);">Ongoing monitoring with decay-triggered alerts. Agents subscribe to physical reality for key entities.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--green); white-space:nowrap;">$99–999 / mo</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); white-space:nowrap;">Full margin</div>
+        </div>
+        <div style="background:var(--bg3); border:1px solid var(--border); border-top:none; padding:20px 32px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:4px;">Ground Truth Data License</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2);">Enterprise access to the compounding Ground Truth Database. The moat monetized directly.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--amber); white-space:nowrap;">$500–10K / mo</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); white-space:nowrap;">Full margin</div>
+        </div>
+        <div style="background:var(--bg2); border:1px solid var(--border); border-top:none; border-radius:0 0 3px 3px; padding:20px 32px; display:grid; grid-template-columns:1fr auto auto; gap:24px; align-items:center;">
+          <div>
+            <div style="font-size:14px; font-weight:600; color:#ffffff; margin-bottom:4px;">Enterprise API</div>
+            <div style="font-size:13px; font-weight:300; color:var(--text2);">Dedicated vertical API for prediction market platforms, compliance teams, and enterprise agent operators.</div>
+          </div>
+          <div style="font-family:'DM Mono',monospace; font-size:16px; font-weight:500; color:var(--blue); white-space:nowrap;">$2K–25K / mo</div>
+          <div style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); white-space:nowrap;">Full margin</div>
+        </div>
+      </div>
+      <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3); margin-top:16px; letter-spacing:0.04em; text-align:center;" class="reveal">Path to $1M ARR: 500 queries/day at $30 avg = $820K/year + subscriptions + data licenses.</p>
+    </div>
+  </section>
+
+  <!-- DEVELOPER QUICKSTART -->
+  <section style="padding: 0 0 80px; background-color: #080c14;">
+    <div class="container">
+      <div class="reveal" style="background:var(--bg2); border:1px solid var(--border); border-radius:3px; overflow:hidden;">
+        <div style="padding:48px 56px 36px; border-bottom:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+          <div>
+            <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:16px;">For agent builders</p>
+            <h2 style="font-family:'Instrument Serif',serif; font-size:clamp(24px,2.8vw,36px); font-weight:400; color:#ffffff; line-height:1.15; margin-bottom:16px;">Ten lines to query<br><em style="font-style:italic; color:var(--amber);">physical reality.</em></h2>
+            <p style="font-size:14px; font-weight:300; color:var(--text2); line-height:1.65; margin-bottom:24px;">Any agent on any framework. POST a query, receive structured JSON with confidence score, provenance hash, and human summary. Zero human in the loop required.</p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text2); border:1px solid var(--border); padding:5px 10px; border-radius:2px; background:var(--bg3);">Claude</span>
+              <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text2); border:1px solid var(--border); padding:5px 10px; border-radius:2px; background:var(--bg3);">LangChain</span>
+              <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text2); border:1px solid var(--border); padding:5px 10px; border-radius:2px; background:var(--bg3);">CrewAI</span>
+              <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text2); border:1px solid var(--border); padding:5px 10px; border-radius:2px; background:var(--bg3);">REST API</span>
+              <span style="font-family:'DM Mono',monospace; font-size:11px; color:var(--amber); border:1px solid rgba(245,166,35,0.3); padding:5px 10px; border-radius:2px; background:var(--amber-bg);">MCP Server</span>
+            </div>
+          </div>
+          <div style="background:#060a10; border:1px solid var(--border); border-radius:3px; overflow:hidden;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg2);">
+              <div style="display:flex; gap:5px;"><div style="width:9px;height:9px;border-radius:50%;background:#ff5f57;"></div><div style="width:9px;height:9px;border-radius:50%;background:#febc2e;"></div><div style="width:9px;height:9px;border-radius:50%;background:#28c840;"></div></div>
+              <span style="font-family:'DM Mono',monospace; font-size:10px; color:var(--text3);">proxy_query.py</span>
+            </div>
+            <div style="padding:20px; font-family:'DM Mono',monospace; font-size:12px; line-height:1.9;">
+              <div><span style="color:var(--text3);">import</span> <span style="color:#8ab4f8;">requests</span></div>
+              <div style="margin-top:8px;"><span style="color:var(--text3);">response</span> <span style="color:var(--text2);">=</span> <span style="color:#8ab4f8;">requests</span><span style="color:var(--text2);">.</span><span style="color:var(--green);">post</span><span style="color:var(--text2);">(</span></div>
+              <div style="padding-left:16px;"><span style="color:#ce9178;">"https://api.useproxy.io/v1/queries"</span><span style="color:var(--text2);">,</span></div>
+              <div style="padding-left:16px;"><span style="color:var(--text3);">json</span><span style="color:var(--text2);">=</span><span style="color:var(--text2);">{</span></div>
+              <div style="padding-left:32px;"><span style="color:#8ab4f8;">"query_type"</span><span style="color:var(--text2);">:</span> <span style="color:#ce9178;">"pharmacy_inventory"</span><span style="color:var(--text2);">,</span></div>
+              <div style="padding-left:32px;"><span style="color:#8ab4f8;">"location"</span><span style="color:var(--text2);">:</span> <span style="color:#ce9178;">"Salt Lake City, UT"</span><span style="color:var(--text2);">,</span></div>
+              <div style="padding-left:32px;"><span style="color:#8ab4f8;">"radius_miles"</span><span style="color:var(--text2);">:</span> <span style="color:var(--amber2);">5</span><span style="color:var(--text2);">,</span></div>
+              <div style="padding-left:32px;"><span style="color:#8ab4f8;">"pay_amount"</span><span style="color:var(--text2);">:</span> <span style="color:var(--amber2);">35.00</span></div>
+              <div style="padding-left:16px;"><span style="color:var(--text2);">},</span></div>
+              <div style="padding-left:16px;"><span style="color:var(--text3);">headers</span><span style="color:var(--text2);">=</span><span style="color:var(--text2);">{</span><span style="color:#8ab4f8;">"X-API-Key"</span><span style="color:var(--text2);">:</span> <span style="color:#ce9178;">api_key</span><span style="color:var(--text2);">}</span></div>
+              <div><span style="color:var(--text2);">)</span></div>
+              <div style="margin-top:8px;"><span style="color:var(--text3);">result</span> <span style="color:var(--text2);">=</span> <span style="color:#8ab4f8;">response</span><span style="color:var(--text2);">.</span><span style="color:var(--green);">json</span><span style="color:var(--text2);">()</span></div>
+              <div style="margin-top:4px;"><span style="color:var(--text3);">print</span><span style="color:var(--text2);">(</span><span style="color:#8ab4f8;">result</span><span style="color:var(--text2);">[</span><span style="color:#ce9178;">"human_summary"</span><span style="color:var(--text2);">])</span></div>
+              <div style="margin-top:8px; color:var(--green); font-size:11px;"># ✅ Ozempic in stock at CVS. Verified 18 min ago.</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px 56px; background:var(--bg3); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <p style="font-family:'DM Mono',monospace; font-size:11px; color:var(--text3);">Returns: JSON + confidence score + provenance hash + human summary. Stored as Truth Atoms permanently.</p>
+          <a href="#waitlist" class="nav-cta" style="font-size:11px;">GET API ACCESS →</a>
         </div>
       </div>
     </div>
